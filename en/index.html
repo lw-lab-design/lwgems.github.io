@@ -17,8 +17,8 @@
   <link rel="alternate" hreflang="es" href="https://lw-gems.com/">
   <link rel="alternate" hreflang="x-default" href="https://lw-gems.com/">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/css/lw-system.css">
+  <!-- CSS (EN vive en /en/ → subir un nivel) -->
+  <link rel="stylesheet" href="../assets/css/lw-system.css">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -77,11 +77,10 @@
 <header class="topbar">
   <div class="container">
     <div class="brand">
-      <a class="brandName" href="/en/" aria-label="LW Gems Home">LW GEMS</a>
+      <a class="brandName" href="./" aria-label="LW Gems Home">LW GEMS</a>
       <span class="brandTag">verified process</span>
     </div>
 
-    <!-- NAV CON IDIOMA (pedido) -->
     <nav class="menu" aria-label="Primary">
       <a href="#areas">Areas</a>
       <a href="#process">Process</a>
@@ -89,7 +88,7 @@
       <a href="#contact">Contact</a>
 
       <span class="langSwitch">
-        <a href="/">ES</a> |
+        <a href="../">ES</a> |
         <strong>EN</strong>
       </span>
     </nav>
@@ -155,6 +154,8 @@
     </div>
   </section>
 
+  <hr>
+
   <!-- AREAS -->
   <section id="areas" class="section">
     <h2>Areas of work</h2>
@@ -193,6 +194,76 @@
     </div>
   </section>
 
+  <hr>
+
+  <!-- PROCESS -->
+  <section id="process" class="section">
+    <h2>Process</h2>
+    <p class="muted">Simple process. Recorded decisions. No surprises.</p>
+
+    <div class="grid4">
+      <article class="card">
+        <div class="stepN">1</div>
+        <h3>Brief</h3>
+        <p class="muted">Size, budget, real use, timeline and references.</p>
+      </article>
+
+      <article class="card">
+        <div class="stepN">2</div>
+        <h3>Material selection</h3>
+        <p class="muted">Accepted/rejected options and why.</p>
+      </article>
+
+      <article class="card">
+        <div class="stepN">3</div>
+        <h3>Approval</h3>
+        <p class="muted">Proposal, terms and confirmation of specification.</p>
+      </article>
+
+      <article class="card">
+        <div class="stepN">4</div>
+        <h3>Fabrication & delivery</h3>
+        <p class="muted">Documentation included. Traceability when applicable.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- STANDARDS -->
+  <section id="standards" class="section">
+    <h2>Standards</h2>
+    <p class="muted">Operational summary. Technical details live in Gold Node.</p>
+
+    <div class="grid2">
+      <article class="card">
+        <div class="cardTitle">Natural materials</div>
+        <p class="muted">Natural diamonds and gemstones. Specified noble metals.</p>
+      </article>
+
+      <article class="card">
+        <div class="cardTitle">Verification before fabrication</div>
+        <p class="muted">Critical variables checked before execution.</p>
+      </article>
+
+      <article class="card">
+        <div class="cardTitle">Metal certification</div>
+        <p class="muted">Assay and certification by an official lab (when applicable).</p>
+      </article>
+
+      <article class="card">
+        <div class="cardTitle">Documented execution</div>
+        <p class="muted">Process record and specifications for continuity and maintenance.</p>
+      </article>
+    </div>
+
+    <p style="margin-top:12px">
+      <a class="btn btnSecondary" href="https://gold.lw-gems.com/" target="_blank" rel="noopener">View standards on Gold Node →</a>
+    </p>
+  </section>
+
+  <hr>
+
   <!-- CONTACT -->
   <section id="contact" class="section">
     <h2>Contact</h2>
@@ -204,12 +275,14 @@
 
       <input type="hidden" name="_subject" value="LW Gems — New inquiry (EN)">
       <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_next" value="https://lw-gems.com/en/thanks/">
 
       <div class="formGrid">
         <label>
           Piece type
-          <select name="piece" id="pieza" required>
-            <option disabled selected>Select</option>
+          <select name="piece" id="piece" required>
+            <option value="" disabled selected>Select</option>
             <option>Engagement ring</option>
             <option>Wedding bands</option>
             <option>Solitaire</option>
@@ -231,6 +304,11 @@
         <label>
           Contact
           <input type="text" name="contact" required>
+        </label>
+
+        <label class="full">
+          Notes (optional)
+          <textarea name="notes" rows="5" placeholder="Ring size (if applicable), references, target date, etc."></textarea>
         </label>
       </div>
 
@@ -255,7 +333,7 @@
   document.querySelectorAll('[data-piece]').forEach(el => {
     el.addEventListener('click', () => {
       const v = el.getAttribute('data-piece');
-      const sel = document.getElementById('pieza');
+      const sel = document.getElementById('piece');
       if (!sel) return;
       [...sel.options].forEach(o => {
         if (o.text.trim() === v.trim()) sel.value = o.value;
