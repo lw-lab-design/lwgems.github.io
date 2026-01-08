@@ -1,188 +1,65 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="content-language" content="es">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+/* Landing helpers (usados por index.html actual) */
+.notice{border-bottom:1px solid var(--line); background:#fff}
+.noticeRow{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0}
+.noticeText{font-size:13px; color:var(--muted)}
+.noticeText strong{color:var(--text)}
 
-  <title>LW Gems — Joyería fina con criterios claros</title>
-  <meta name="description" content="Joyería fina bajo proceso verificado: diamantes naturales, oro 18k y gemas naturales. Opciones concretas, variables explícitas y documentación del trabajo.">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+.heroGrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:start}
+@media (max-width:900px){.heroGrid{grid-template-columns:1fr}}
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://lw-gems.com/">
+.quickLinks{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 6px}
+.chip{
+  display:inline-flex; align-items:center;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:var(--radiusPill);
+  background:var(--chip);
+  text-decoration:none;
+  font-size:13px;
+  box-shadow:var(--shadow);
+}
+.chip:hover{background:var(--chip2)}
 
-  <!-- Hreflang -->
-  <link rel="alternate" hreflang="es" href="https://lw-gems.com/">
-  <link rel="alternate" hreflang="en" href="https://lw-gems.com/en/">
-  <link rel="alternate" hreflang="x-default" href="https://lw-gems.com/">
+.section{padding:26px 0}
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="./assets/css/lw-system.css">
+.grid3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:12px}
+.grid2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:12px}
+.grid4{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:12px}
+@media (max-width:900px){.grid3,.grid2,.grid4{grid-template-columns:1fr}}
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="LW Gems">
-  <meta property="og:title" content="LW Gems — Joyería fina con criterios claros">
-  <meta property="og:description" content="Diamantes naturales · Oro 18k · Gemas naturales. Proceso verificado y documentación del trabajo.">
-  <meta property="og:url" content="https://lw-gems.com/">
+.cardBlock{padding-top:12px; margin-top:12px; border-top:1px solid var(--line)}
+.cardLabel{font-size:11.5px; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px}
+.cardValue{font-size:13px; color:var(--text); line-height:1.55}
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="LW Gems — Joyería fina con criterios claros">
-  <meta name="twitter:description" content="Diamantes naturales · Oro 18k · Gemas naturales. Proceso verificado y documentación del trabajo.">
+.stepN{
+  width:28px; height:28px;
+  display:inline-flex; align-items:center; justify-content:center;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-weight:700;
+  margin-bottom:10px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
 
-  <!-- Meta internos -->
-  <meta name="lw:page-type" content="landing">
-  <meta name="lw:note-status" content="canonical">
-  <meta name="lw:note-version" content="v1">
+.form label{display:block; font-size:13px; color:var(--text); margin-bottom:10px}
+.form input,.form select,.form textarea{
+  width:100%;
+  margin-top:6px;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  font-size:14px;
+  background:#fff;
+}
+.formGrid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:10px}
+.formGrid .full{grid-column:1 / -1}
+@media (max-width:900px){.formGrid{grid-template-columns:1fr}}
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"Organization",
-        "@id":"https://lw-gems.com/#organization",
-        "name":"LW Gems",
-        "url":"https://lw-gems.com/",
-        "email":"info@lw-gems.com"
-      },
-      {
-        "@type":"WebSite",
-        "@id":"https://lw-gems.com/#website",
-        "url":"https://lw-gems.com/",
-        "name":"LW Gems",
-        "publisher":{"@id":"https://lw-gems.com/#organization"},
-        "inLanguage":"es"
-      },
-      {
-        "@type":"WebPage",
-        "@id":"https://lw-gems.com/#webpage",
-        "url":"https://lw-gems.com/",
-        "name":"LW Gems — Joyería fina con criterios claros",
-        "isPartOf":{"@id":"https://lw-gems.com/#website"},
-        "about":{"@id":"https://lw-gems.com/#organization"},
-        "inLanguage":"es"
-      }
-    ]
-  }
-  </script>
-</head>
+.footerRow{display:flex; justify-content:space-between; gap:12px; align-items:center}
+.footerLinks{display:flex; gap:14px; flex-wrap:wrap}
 
-<body class="page-home">
-<a class="skip-link" href="#content">Saltar al contenido</a>
-
-<header class="topbar">
-  <div class="container">
-    <div class="brand">
-      <a class="brandName" href="./" aria-label="LW Gems Home">LW GEMS</a>
-      <span class="brandTag">proceso verificado</span>
-    </div>
-
-    <!-- NAV (ES | EN) -->
-    <nav class="menu" aria-label="Principal">
-      <a href="#areas">Áreas</a>
-      <a href="#process">Proceso</a>
-      <a href="#standards">Estándares</a>
-      <a href="#contact">Contacto</a>
-
-      <span class="langSwitch">
-        <strong>ES</strong> |
-        <a href="./en/">EN</a>
-      </span>
-    </nav>
-  </div>
-</header>
-
-<section class="notice">
-  <div class="container noticeRow">
-    <div class="noticeText">
-      <strong>Compra directa:</strong> piezas disponibles en tienda online.
-    </div>
-    <a class="btn btnGhost" href="https://shop.lw-gems.com/" target="_blank" rel="noopener">
-      Ver tienda online →
-    </a>
-  </div>
-</section>
-
-<main id="content" class="container">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="heroGrid">
-      <div>
-        <div class="kicker">LW GEMS · PROCESO VERIFICADO</div>
-
-        <h1>Joyería fina con criterios claros.</h1>
-        <p class="lead">Diamantes naturales · Oro 18k · Gemas naturales.</p>
-
-        <div class="quickLinks" aria-label="Rutas rápidas">
-          <a class="chip" href="#form" data-piece="Anillo de compromiso">Anillos de compromiso</a>
-          <a class="chip" href="#form" data-piece="Alianzas">Alianzas</a>
-          <a class="chip" href="#form" data-piece="Solitario">Solitarios</a>
-          <a class="chip" href="#form" data-piece="Rediseño">Rediseño</a>
-        </div>
-
-        <div class="ctaRow">
-          <a class="btn btnPrimary" href="#form">Iniciar consulta</a>
-          <a class="btn btnSecondary" href="#standards">Ver estándares</a>
-        </div>
-
-        <p class="micro">Respuesta con opciones concretas.</p>
-      </div>
-
-      <aside class="card">
-        <div class="cardTitle">Resumen operativo</div>
-
-        <div class="cardBlock">
-          <div class="cardLabel">Pago</div>
-          <div class="cardValue">Cuotas o pago único (según pieza). Contado con descuento cuando aplica.</div>
-        </div>
-
-        <div class="cardBlock">
-          <div class="cardLabel">Tiempos</div>
-          <div class="cardValue">Plazos típicos: 10–25 días hábiles según complejidad y disponibilidad de material.</div>
-        </div>
-
-        <div class="cardBlock">
-          <div class="cardLabel">Estándares técnicos</div>
-          <div class="cardValue">El detalle técnico se documenta en Gold Node (archivo no comercial).</div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- RESTO DEL CONTENIDO SIN CAMBIOS -->
-  <!-- Áreas · Proceso · Estándares · Contacto · Footer -->
-  <!-- (queda exactamente igual a tu versión previa) -->
-
-</main>
-
-<footer class="footer">
-  <div class="container footerRow">
-    <div>© <span id="y"></span> LW Gems</div>
-    <div class="footerLinks">
-      <a href="https://gold.lw-gems.com/" target="_blank" rel="noopener">Gold Node →</a>
-      <a href="mailto:info@lw-gems.com">info@lw-gems.com</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-
-  document.querySelectorAll('[data-piece]').forEach(el => {
-    el.addEventListener('click', () => {
-      const v = el.getAttribute('data-piece');
-      const sel = document.getElementById('pieza');
-      if (!sel) return;
-      [...sel.options].forEach(o => {
-        if (o.text.trim() === v.trim()) sel.value = o.value;
-      });
-    });
-  });
-</script>
-</body>
-</html>
+.btnGhost{background:#fff}
+.btnPrimary{background:var(--chip)}
+.btnSecondary{background:#fff}
+.micro{font-size:13px; color:var(--muted); margin-top:10px}
