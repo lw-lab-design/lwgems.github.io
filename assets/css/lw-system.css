@@ -304,3 +304,81 @@ body.page-note strong{font-weight:650}
   box-shadow:var(--shadow);
 }
 .btn:hover{background:var(--chip2)}
+/* === BRIDGE: permitir landing CSS también en home === */
+body.page-home.page-landing section{padding:26px 0}
+body.page-home.page-landing .hero{padding:28px 0 12px}
+body.page-home.page-landing .heroGrid{
+  display:grid;
+  grid-template-columns: 1.25fr .85fr;
+  gap:18px;
+  align-items:start;
+}
+@media (max-width:920px){
+  body.page-home.page-landing .heroGrid{grid-template-columns:1fr}
+}
+
+body.page-home.page-landing .quickLinks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+body.page-home.page-landing .chip{
+  display:inline-flex;align-items:center;
+  padding:8px 10px;border-radius:var(--radiusPill);
+  border:1px solid var(--line);
+  background:var(--chip);
+  text-decoration:none;font-size:12px;
+  box-shadow:var(--shadow);
+}
+body.page-home.page-landing .chip:hover{background:var(--chip2)}
+
+body.page-home.page-landing .grid3{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;margin-top:12px;
+}
+@media (max-width:900px){body.page-home.page-landing .grid3{grid-template-columns:1fr}}
+
+body.page-home.page-landing .grid2{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;margin-top:12px;
+}
+@media (max-width:900px){body.page-home.page-landing .grid2{grid-template-columns:1fr}}
+
+body.page-home.page-landing .grid4{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;margin-top:12px;
+}
+@media (max-width:900px){body.page-home.page-landing .grid4{grid-template-columns:1fr}}
+
+body.page-home.page-landing .stepN{
+  width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:10px;background:#fff;
+  box-shadow:var(--shadow);font-weight:700;margin-bottom:10px;
+}
+
+body.page-home.page-landing .cardBlock{padding-top:12px;margin-top:12px;border-top:1px solid var(--line)}
+body.page-home.page-landing .cardLabel{
+  font-size:11.5px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:6px;
+}
+body.page-home.page-landing .cardValue{font-size:13px;line-height:1.55}
+
+body.page-home.page-landing .formGrid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;margin-top:10px;
+}
+@media (max-width:900px){body.page-home.page-landing .formGrid{grid-template-columns:1fr}}
+body.page-home.page-landing .formGrid .full{grid-column:1 / -1}
+
+body.page-home.page-landing .form label{display:block;font-size:13px;color:var(--text);margin-bottom:10px}
+body.page-home.page-landing .form input,
+body.page-home.page-landing .form select,
+body.page-home.page-landing .form textarea{
+  width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--line);
+  border-radius:12px;background:#fff;font-size:14px;
+}
+
+body.page-home.page-landing .footerRow{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+body.page-home.page-landing .footerLinks{display:flex;gap:14px;flex-wrap:wrap}
+body.page-home.page-landing .micro{font-size:13px;color:var(--muted);margin-top:10px}
+
+/* Botones por clase (los usás en HTML) */
+.btnGhost{background:#fff}
+.btnPrimary{background:var(--chip)}
+.btnSecondary{background:#fff}
