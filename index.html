@@ -17,7 +17,7 @@
   <link rel="alternate" hreflang="en" href="https://lw-gems.com/en/">
   <link rel="alternate" hreflang="x-default" href="https://lw-gems.com/">
 
-  <!-- CSS: ruta RELATIVA (clave para GitHub Pages en /repo/) -->
+  <!-- CSS del repo (ruta relativa) -->
   <link rel="stylesheet" href="assets/css/lw-system.css">
 
   <!-- OG -->
@@ -69,6 +69,72 @@
     ]
   }
   </script>
+
+  <!-- Landing-only layout (sin tocar tu CSS base) -->
+  <style>
+    /* barra superior "compra directa" */
+    .notice{border-bottom:1px solid var(--line); background:#fff}
+    .noticeRow{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 22px}
+    .noticeText{font-size:13px; color:var(--muted)}
+    .noticeText strong{color:var(--text)}
+    /* hero a 2 columnas */
+    .heroGrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:start}
+    @media (max-width:900px){.heroGrid{grid-template-columns:1fr}}
+    /* chips */
+    .quickLinks{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 6px}
+    .chip{
+      display:inline-block;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:var(--radiusPill);
+      background:var(--chip);
+      text-decoration:none;
+      font-size:13px;
+      box-shadow:var(--shadow);
+    }
+    .chip:hover{background:var(--chip2)}
+    /* secciones */
+    .section{padding:26px 0}
+    /* grids */
+    .grid3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:12px}
+    .grid2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:12px}
+    .grid4{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:12px}
+    @media (max-width:900px){
+      .grid3,.grid2,.grid4{grid-template-columns:1fr}
+    }
+    /* resumen operativo dentro de card */
+    .cardBlock{padding-top:12px; margin-top:12px; border-top:1px solid var(--line)}
+    .cardLabel{font-size:11.5px; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px}
+    .cardValue{font-size:13px; color:var(--text); line-height:1.55}
+    /* pasos */
+    .stepN{
+      width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center;
+      border:1px solid var(--line); border-radius:10px; font-weight:700; margin-bottom:10px;
+      background:#fff; box-shadow:var(--shadow);
+    }
+    /* formulario */
+    .form label{display:block; font-size:13px; color:var(--text); margin-bottom:10px}
+    .form input,.form select,.form textarea{
+      width:100%;
+      margin-top:6px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      font-size:14px;
+      background:#fff;
+    }
+    .formGrid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:10px}
+    .formGrid .full{grid-column:1 / -1}
+    @media (max-width:900px){.formGrid{grid-template-columns:1fr}}
+    /* footer */
+    .footerRow{display:flex; justify-content:space-between; gap:12px; align-items:center}
+    .footerLinks{display:flex; gap:14px; flex-wrap:wrap}
+    /* CTAs (reusa tus estilos base) */
+    .btnPrimary{background:var(--chip)}
+    .btnSecondary{background:#fff}
+    .btnGhost{background:#fff}
+    .micro{font-size:13px; color:var(--muted); margin-top:10px}
+  </style>
 </head>
 
 <body class="page-home">
@@ -78,7 +144,7 @@
     <div class="container">
       <div class="brand">
         <a class="brandName" href="/" aria-label="LW Gems Home">LW GEMS</a>
-        <span class="brandTag">verified process</span>
+        <span class="brandTag">proceso verificado</span>
       </div>
 
       <nav class="menu" aria-label="Principal">
@@ -105,7 +171,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="heroGrid">
-        <div class="heroLeft">
+        <div>
           <div class="kicker">LW GEMS · PROCESO VERIFICADO</div>
 
           <h1>Joyería fina con criterios claros.</h1>
@@ -121,15 +187,15 @@
           </div>
 
           <div class="ctaRow">
-            <a class="btn btnPrimary" href="#form">Iniciar consulta</a>
+            <a class="btn btnPrimary btnPrimary" href="#form">Iniciar consulta</a>
             <a class="btn btnSecondary" href="#standards">Ver estándares</a>
           </div>
 
           <p class="micro">Respuesta con opciones concretas.</p>
         </div>
 
-        <aside class="heroRight card">
-          <h2 class="cardTitle">Resumen operativo</h2>
+        <aside class="card">
+          <div class="cardTitle">Resumen operativo</div>
 
           <div class="cardBlock">
             <div class="cardLabel">Pago</div>
@@ -149,6 +215,8 @@
       </div>
     </section>
 
+    <hr>
+
     <!-- ÁREAS -->
     <section id="areas" class="section">
       <h2>Áreas de trabajo</h2>
@@ -156,36 +224,38 @@
 
       <div class="grid3">
         <article class="card">
-          <h3>Anillos de compromiso</h3>
+          <div class="cardTitle">Anillos de compromiso</div>
           <p class="muted">Selección de diamante, proporciones, comfort y criterios de decisión.</p>
-          <a class="btn btnGhost" href="#form" data-piece="Anillo de compromiso">Iniciar consulta →</a>
+          <a class="btn" href="#form" data-piece="Anillo de compromiso">Iniciar consulta →</a>
         </article>
 
         <article class="card">
-          <h3>Alianzas</h3>
+          <div class="cardTitle">Alianzas</div>
           <p class="muted">Perfiles, terminación, tolerancias de uso real y especificación de metal.</p>
-          <a class="btn btnGhost" href="#form" data-piece="Alianzas">Iniciar consulta →</a>
+          <a class="btn" href="#form" data-piece="Alianzas">Iniciar consulta →</a>
         </article>
 
         <article class="card">
-          <h3>Solitarios</h3>
+          <div class="cardTitle">Solitarios</div>
           <p class="muted">Estructura, asiento, balance visual y compatibilidad con uso diario.</p>
-          <a class="btn btnGhost" href="#form" data-piece="Solitario">Iniciar consulta →</a>
+          <a class="btn" href="#form" data-piece="Solitario">Iniciar consulta →</a>
         </article>
 
         <article class="card">
-          <h3>Aros y colgantes</h3>
+          <div class="cardTitle">Aros y colgantes</div>
           <p class="muted">Piezas esenciales con terminación definida y tolerancias de uso real.</p>
-          <a class="btn btnGhost" href="#form" data-piece="Aros y colgantes">Iniciar consulta →</a>
+          <a class="btn" href="#form" data-piece="Aros y colgantes">Iniciar consulta →</a>
         </article>
 
         <article class="card">
-          <h3>Rediseño</h3>
+          <div class="cardTitle">Rediseño</div>
           <p class="muted">Diagnóstico, propuesta, ejecución y documentación del trabajo.</p>
-          <a class="btn btnGhost" href="#form" data-piece="Rediseño">Iniciar consulta →</a>
+          <a class="btn" href="#form" data-piece="Rediseño">Iniciar consulta →</a>
         </article>
       </div>
     </section>
+
+    <hr>
 
     <!-- PROCESO -->
     <section id="process" class="section">
@@ -193,25 +263,25 @@
       <p class="muted">Proceso simple. Decisiones registradas. Sin sorpresas.</p>
 
       <div class="grid4">
-        <article class="step card">
+        <article class="card">
           <div class="stepN">1</div>
           <h3>Brief</h3>
           <p class="muted">Medida, presupuesto, uso real, plazos y referencias.</p>
         </article>
 
-        <article class="step card">
+        <article class="card">
           <div class="stepN">2</div>
           <h3>Selección de material</h3>
           <p class="muted">Opciones aceptadas/rechazadas y por qué.</p>
         </article>
 
-        <article class="step card">
+        <article class="card">
           <div class="stepN">3</div>
           <h3>Aprobación</h3>
           <p class="muted">Propuesta, condiciones y confirmación de especificación.</p>
         </article>
 
-        <article class="step card">
+        <article class="card">
           <div class="stepN">4</div>
           <h3>Fabricación y entrega</h3>
           <p class="muted">Documentación incluida. Trazabilidad cuando aplica.</p>
@@ -219,35 +289,41 @@
       </div>
     </section>
 
+    <hr>
+
     <!-- ESTÁNDARES -->
     <section id="standards" class="section">
       <h2>Estándares</h2>
       <p class="muted">Resumen operativo. El detalle técnico se documenta en Gold Node.</p>
 
       <div class="grid2">
-        <article class="bullet card">
-          <h3>Materiales naturales</h3>
+        <article class="card">
+          <div class="cardTitle">Materiales naturales</div>
           <p class="muted">Diamantes y gemas naturales. Metales nobles especificados.</p>
         </article>
 
-        <article class="bullet card">
-          <h3>Verificación antes de fabricar</h3>
+        <article class="card">
+          <div class="cardTitle">Verificación antes de fabricar</div>
           <p class="muted">Chequeo de variables críticas previo a ejecución.</p>
         </article>
 
-        <article class="bullet card">
-          <h3>Certificado de metal</h3>
+        <article class="card">
+          <div class="cardTitle">Certificado de metal</div>
           <p class="muted">Ensayo y certificación de metal por laboratorio oficial (cuando aplica).</p>
         </article>
 
-        <article class="bullet card">
-          <h3>Documentación del trabajo</h3>
+        <article class="card">
+          <div class="cardTitle">Documentación del trabajo</div>
           <p class="muted">Registro del proceso y especificaciones para continuidad y mantenimiento.</p>
         </article>
       </div>
 
-      <a class="btn btnSecondary" href="https://gold.lw-gems.com/" target="_blank" rel="noopener">Ver estándares en Gold Node →</a>
+      <p style="margin-top:12px">
+        <a class="btn" href="https://gold.lw-gems.com/" target="_blank" rel="noopener">Ver estándares en Gold Node →</a>
+      </p>
     </section>
+
+    <hr>
 
     <!-- CONTACTO / FORM -->
     <section id="contact" class="section">
@@ -322,7 +398,7 @@
           </label>
         </div>
 
-        <button class="btn btnPrimary" type="submit">Enviar consulta</button>
+        <button class="btn" type="submit">Enviar consulta</button>
       </form>
     </section>
   </main>
@@ -341,13 +417,12 @@
     // año
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Si clickean chips/botones con data-piece, preselecciona "Tipo de pieza"
+    // si clickean chips/botones con data-piece, preselecciona "Tipo de pieza"
     document.querySelectorAll('[data-piece]').forEach(el => {
       el.addEventListener('click', () => {
         const v = el.getAttribute('data-piece');
         const sel = document.getElementById('pieza');
         if (!sel) return;
-        // intenta seleccionar por texto
         [...sel.options].forEach(o => {
           if (o.text.trim() === v.trim()) sel.value = o.value;
         });
