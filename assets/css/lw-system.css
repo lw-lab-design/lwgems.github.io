@@ -79,6 +79,7 @@ main{max-width:920px;margin:64px auto 120px;padding:0}
   background:#fff;
   line-height:1.6;
 }
+
 .menu{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .menu a{
   font-size:12px;
@@ -102,6 +103,26 @@ main{max-width:920px;margin:64px auto 120px;padding:0}
   background:var(--chip2);
   border-color:var(--line);
 }
+
+/* ✅ Language switch (ES | EN) */
+.langSwitch{
+  font-size:12px;
+  color:var(--muted);
+  margin-left:8px;
+  white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.langSwitch a{
+  color:var(--muted);
+  text-decoration:none;
+  padding:0;            /* no hereda el padding de .menu a */
+  border:0;             /* evita estilo pill */
+  background:transparent;
+}
+.langSwitch a:hover{ text-decoration:underline; opacity:1; }
+.langSwitch strong{ color:var(--text); font-weight:700; }
 
 /* Typography base */
 h1,h2,h3{font-weight:700;letter-spacing:-0.02em;line-height:1.18;margin:0 0 12px}
@@ -283,350 +304,3 @@ body.page-note strong{font-weight:650}
   box-shadow:var(--shadow);
 }
 .btn:hover{background:var(--chip2)}
-/* =========================
-   LW GEMS · LANDING (page-landing)
-   ========================= */
-
-/* Usa body.page-landing en el <body>.
-   Si ya estás usando page-home, duplico selector para que funcione igual. */
-body.page-landing main,
-body.page-home.page-landing main{
-  max-width:1100px;
-  padding:0 22px;
-}
-
-/* HERO layout: izquierda texto / derecha panel */
-body.page-landing .hero,
-body.page-home.page-landing .hero{
-  padding:28px 0 12px;
-}
-
-body.page-landing .heroGrid,
-body.page-home.page-landing .heroGrid{
-  display:grid;
-  grid-template-columns: 1.25fr .85fr;
-  gap:18px;
-  align-items:start;
-}
-
-@media (max-width: 920px){
-  body.page-landing .heroGrid,
-  body.page-home.page-landing .heroGrid{
-    grid-template-columns:1fr;
-  }
-}
-
-/* Título (grande, limpio) */
-body.page-landing h1,
-body.page-home.page-landing h1{
-  font-size:3.05rem;
-  letter-spacing:-0.03em;
-  line-height:1.04;
-  margin:8px 0 12px;
-}
-
-@media (max-width: 520px){
-  body.page-landing h1,
-  body.page-home.page-landing h1{
-    font-size:2.35rem;
-  }
-}
-
-/* Lead / descripción */
-body.page-landing .lead{
-  font-size:1.02rem;
-  line-height:1.68;
-  margin:0 0 14px;
-}
-
-/* Row “diamantes · oro · gemas” */
-body.page-landing .bulletRow{
-  font-size:0.98rem;
-  color:var(--muted);
-  margin:0 0 16px;
-}
-body.page-landing .bulletRow span{white-space:nowrap}
-body.page-landing .bulletRow .dot{margin:0 8px;color:var(--muted)}
-
-/* CTA buttons (primario oscuro, secundario claro) */
-body.page-landing .ctaRow{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:14px 0 8px;
-}
-
-body.page-landing .btnPrimary,
-body.page-landing .btnSecondary{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px 14px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  text-decoration:none;
-  font-size:13px;
-  font-weight:650;
-  box-shadow:var(--shadow);
-}
-
-body.page-landing .btnPrimary{
-  background:var(--text);
-  color:#fff;
-  border-color:rgba(11,18,32,.18);
-}
-body.page-landing .btnPrimary:hover{opacity:.92}
-
-body.page-landing .btnSecondary{
-  background:#fff;
-  color:var(--text);
-}
-body.page-landing .btnSecondary:hover{background:var(--chip2)}
-
-/* Línea corta debajo del hero */
-body.page-landing .heroNote{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:0.98rem;
-}
-
-/* Panel derecho (rutas rápidas + resumen) */
-body.page-landing .sidePanel{
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  background:#fff;
-  box-shadow:var(--shadow);
-  padding:14px;
-}
-
-body.page-landing .panelTitle{
-  font-weight:700;
-  font-size:13px;
-  margin:0 0 10px;
-  color:var(--muted);
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-}
-
-body.page-landing .chipRow{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin:6px 0 12px;
-}
-body.page-landing .chip{
-  display:inline-flex;
-  align-items:center;
-  padding:8px 10px;
-  border-radius:var(--radiusPill);
-  border:1px solid var(--line);
-  background:var(--chip);
-  font-size:12px;
-  text-decoration:none;
-  color:var(--text);
-  box-shadow:var(--shadow);
-}
-body.page-landing .chip:hover{background:var(--chip2)}
-
-/* Items del resumen (Pago / Tiempos / Estándares) */
-body.page-landing .panelBlock{
-  border-top:1px solid var(--line);
-  padding-top:12px;
-  margin-top:12px;
-}
-body.page-landing .panelLabel{
-  font-size:12px;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  color:var(--muted);
-  font-weight:700;
-  margin:0 0 6px;
-}
-body.page-landing .panelText{
-  margin:0;
-  font-size:0.98rem;
-  line-height:1.6;
-}
-
-/* Secciones */
-body.page-landing section{
-  padding:26px 0;
-}
-body.page-landing .sectionTitle{
-  font-size:1.6rem;
-  margin:0 0 10px;
-}
-body.page-landing .sectionLead{
-  color:var(--muted);
-  margin:0 0 14px;
-}
-
-/* Cards grid (Áreas de trabajo) */
-body.page-landing .cardGrid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-  margin-top:12px;
-}
-@media (max-width: 980px){
-  body.page-landing .cardGrid{grid-template-columns:1fr}
-}
-
-body.page-landing .workCard{
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  background:#fff;
-  box-shadow:var(--shadow);
-  padding:16px;
-}
-body.page-landing .workCard h3{
-  font-size:1.05rem;
-  margin:0 0 6px;
-}
-body.page-landing .workCard p{
-  color:var(--muted);
-  font-size:0.98rem;
-  line-height:1.6;
-  margin:0 0 12px;
-}
-
-/* Botón dentro de cards (mismo look que chip pero más grande) */
-body.page-landing .workCard .cardCta{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  background:#fff;
-  box-shadow:var(--shadow);
-  text-decoration:none;
-  font-size:13px;
-  font-weight:650;
-  color:var(--text);
-}
-body.page-landing .workCard .cardCta:hover{background:var(--chip2)}
-
-/* Steps (Proceso) */
-body.page-landing .stepsGrid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
-  margin-top:12px;
-}
-@media (max-width: 980px){
-  body.page-landing .stepsGrid{grid-template-columns:1fr}
-}
-body.page-landing .stepCard{
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  background:#fff;
-  box-shadow:var(--shadow);
-  padding:14px;
-}
-body.page-landing .stepNum{
-  width:26px;height:26px;
-  border-radius:10px;
-  border:1px solid var(--line);
-  background:var(--chip);
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:750;
-  font-size:12px;
-  margin-bottom:8px;
-}
-body.page-landing .stepTitle{font-weight:700;margin:0 0 6px}
-body.page-landing .stepText{margin:0;color:var(--muted);font-size:0.98rem;line-height:1.6}
-
-/* Form (Solicitud) */
-body.page-landing .formWrap{
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  background:#fff;
-  box-shadow:var(--shadow);
-  padding:16px;
-  margin-top:12px;
-}
-body.page-landing form .row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-@media (max-width: 820px){
-  body.page-landing form .row{grid-template-columns:1fr}
-}
-body.page-landing label{
-  display:block;
-  font-size:12px;
-  font-weight:700;
-  color:var(--muted);
-  letter-spacing:0.04em;
-  margin:10px 0 6px;
-}
-body.page-landing input,
-body.page-landing select,
-body.page-landing textarea{
-  width:100%;
-  padding:12px 12px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  background:#fff;
-  font-size:14px;
-  outline:none;
-}
-body.page-landing textarea{min-height:110px;resize:vertical}
-body.page-landing input:focus,
-body.page-landing select:focus,
-body.page-landing textarea:focus{
-  border-color:rgba(11,18,32,.28);
-}
-
-body.page-landing .submitRow{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  margin-top:14px;
-}
-body.page-landing .submitBtn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px 14px;
-  border-radius:14px;
-  border:1px solid rgba(11,18,32,.18);
-  background:var(--text);
-  color:#fff;
-  font-size:13px;
-  font-weight:750;
-  box-shadow:var(--shadow);
-  cursor:pointer;
-}
-body.page-landing .submitBtn:hover{opacity:.92}
-
-body.page-landing .formHint{
-  color:var(--muted);
-  font-size:12.8px;
-}
-.langSwitch{
-  font-size:12px;
-  color:var(--muted);
-  margin-left:8px;
-  white-space:nowrap;
-}
-
-.langSwitch a{
-  color:var(--muted);
-  text-decoration:none;
-}
-
-.langSwitch a:hover{
-  text-decoration:underline;
-}
-
-.langSwitch strong{
-  color:var(--text);
-  font-weight:700;
-}
