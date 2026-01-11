@@ -3,39 +3,58 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="content-language" content="es-AR">
+  <meta name="language" content="es-AR">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>LW Gems — Joyería fina verificada</title>
   <meta name="description" content="Diamantes naturales · Oro 18k · Gemas naturales. Proceso documentado y verificación antes de fabricar. Consulta y cotización en 2 minutos.">
+
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://lw-gems.com/">
+
+  <!-- Hreflang (HOME) -->
+  <link rel="alternate" href="https://lw-gems.com/" hreflang="es-AR">
+  <link rel="alternate" href="https://lw-gems.com/" hreflang="x-default">
+
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="LW Gems">
   <meta property="og:title" content="LW Gems — Joyería fina verificada">
-  <meta property="og:description" content="Materiales naturales y proceso documentado. Consulta y cotización en 2 minutos.">
+  <meta property="og:description" content="Diamantes naturales · Oro 18k · Gemas naturales. Proceso documentado y verificación antes de fabricar.">
   <meta property="og:url" content="https://lw-gems.com/">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:image" content="https://lw-gems.com/assets/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="LW Gems — Joyería fina verificada">
   <meta name="twitter:description" content="Materiales naturales y proceso documentado. Consulta y cotización en 2 minutos.">
+  <meta name="twitter:image" content="https://lw-gems.com/assets/img/og.jpg">
 
-  <!-- CSS externo (cache-buster) -->
-  <link rel="stylesheet" href="./assets/css/site.css?v=2026-01-08-02">
+  <!-- CSS -->
+  <link rel="stylesheet" href="./assets/css/site.css?v=2026-01-11-03">
 
-  <!-- JSON-LD: Organization + WebSite -->
+  <!-- JSON-LD: Organization -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Organization",
     "@id":"https://lw-gems.com/#org",
     "name":"LW Gems",
-    "url":"https://lw-gems.com/"
+    "url":"https://lw-gems.com/",
+    "logo":"https://lw-gems.com/assets/img/logo.png"
   }
   </script>
 
+  <!-- JSON-LD: WebSite -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -43,22 +62,43 @@
     "@id":"https://lw-gems.com/#website",
     "url":"https://lw-gems.com/",
     "name":"LW Gems",
-    "publisher":{"@id":"https://lw-gems.com/#org"}
+    "publisher":{"@id":"https://lw-gems.com/#org"},
+    "inLanguage":"es-AR"
   }
   </script>
 
-  <style>
-    /* SOLO para evitar el bug de “Saltar al contenido” visible */
-    .skip-link{
-      position:absolute; left:-9999px; top:auto;
-      width:1px; height:1px; overflow:hidden;
-    }
-    .skip-link:focus{
-      left:16px; top:16px; width:auto; height:auto;
-      padding:10px 12px; background:#fff; border:1px solid #e5e7eb; border-radius:10px;
-      z-index:9999;
-    }
-  </style>
+  <!-- JSON-LD: WebPage (HOME) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "@id":"https://lw-gems.com/#webpage",
+    "url":"https://lw-gems.com/",
+    "name":"LW Gems — Joyería fina verificada",
+    "description":"Diamantes naturales · Oro 18k · Gemas naturales. Proceso documentado y verificación antes de fabricar.",
+    "isPartOf":{"@id":"https://lw-gems.com/#website"},
+    "about":{"@id":"https://lw-gems.com/#org"},
+    "publisher":{"@id":"https://lw-gems.com/#org"},
+    "inLanguage":"es-AR"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList (HOME) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "@id":"https://lw-gems.com/#breadcrumbs",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "name":"LW Gems",
+        "item":"https://lw-gems.com/"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -66,17 +106,16 @@
 
   <header class="topbar" role="banner">
     <div class="container">
-      <div class="inner">
+      <div class="topbarInner">
         <div class="brand">
           <a class="brandName" href="/" aria-label="LW Gems Home">LW GEMS</a>
-          <span class="brandTag">Verified process</span>
+          <span class="brandTag">Proceso verificado</span>
         </div>
 
-        <!-- Sin “Áreas de trabajo” (redundante) -->
-        <nav aria-label="Primary">
+        <nav class="nav" aria-label="Primary">
           <a href="#proceso">Proceso</a>
           <a href="#estandares">Estándares</a>
-          <a href="#contacto">Contacto</a>
+          <a class="navCta" href="#contacto">Iniciar consulta</a>
         </nav>
       </div>
     </div>
@@ -86,41 +125,35 @@
 
     <!-- HERO -->
     <section class="hero" aria-label="Hero">
-      <div>
+      <div class="heroMain">
         <div class="kicker">LW GEMS · PROCESO VERIFICADO</div>
         <h1>Joyería fina con criterios claros.</h1>
-
-        <p class="lead">
-          Diamantes naturales · Oro 18k · Gemas naturales.
-        </p>
+        <p class="lead">Diamantes naturales · Oro 18k · Gemas naturales.</p>
 
         <div class="ctaRow">
           <a class="btn" href="#contacto">Iniciar consulta</a>
-        </div>
-
-        <div class="miniNote">
-          Respuesta con opciones concretas.
+          <span class="miniNote">Respuesta con opciones concretas.</span>
         </div>
       </div>
 
-      <!-- Card lateral -->
-      <aside class="card" aria-label="Resumen operativo">
-        <h3>Resumen operativo</h3>
+      <aside class="panel" aria-label="Resumen operativo">
+        <div class="panelTitle">Resumen operativo</div>
 
-        <h4 class="cap">Pago</h4>
-        <p>Cuotas o pago único (según pieza). Contado con descuento cuando aplica.</p>
+        <div class="kv">
+          <div class="k">Pago</div>
+          <div class="v">Cuotas o pago único (según pieza). Contado con descuento cuando aplica.</div>
+        </div>
 
-        <h4 class="cap" style="margin-top:12px;">Tiempos</h4>
-        <p>Plazos típicos: 10–25 días hábiles según complejidad y disponibilidad de material.</p>
+        <div class="kv">
+          <div class="k">Tiempos</div>
+          <div class="v">Plazos típicos: 10–25 días hábiles según complejidad y disponibilidad de material.</div>
+        </div>
 
-        <h4 class="cap" style="margin-top:12px;">Estándares técnicos</h4>
-        <p>El detalle técnico vive en Gold Node (no comercial).</p>
+        <div class="panelHr" role="separator" aria-hidden="true"></div>
 
-        <hr class="sep" style="margin:16px 0;">
-
-        <h3>Rutas rápidas</h3>
+        <div class="panelTitle">Rutas rápidas</div>
         <div class="chipRow">
-          <a class="chip" href="#anillos-compromiso">Anillos de compromiso</a>
+          <a class="chip" href="#anillos-compromiso">Anillos</a>
           <a class="chip" href="#alianzas">Alianzas</a>
           <a class="chip" href="#solitarios">Solitarios</a>
           <a class="chip" href="#redisenio">Rediseño</a>
@@ -128,135 +161,86 @@
       </aside>
     </section>
 
-    <!-- ÁREAS DE TRABAJO -->
-    <section id="trabajos" aria-label="Áreas de trabajo">
-      <div class="sectionTitle">
+    <!-- ÁREAS -->
+    <section id="trabajos" class="section" aria-label="Áreas de trabajo">
+      <div class="sectionHead">
         <h2>Áreas de trabajo</h2>
-        <div class="hint">Trabajo bajo especificación. Alcances definidos. Variables explícitas.</div>
       </div>
 
       <div class="grid3">
-        <div class="card" id="anillos-compromiso">
+        <article class="card" id="anillos-compromiso">
           <h3>Anillos de compromiso</h3>
-          <p>Selección de diamante, proporciones y confort y criterios de decisión.</p>
-          <a class="chip" href="#contacto">Iniciar consulta →</a>
-        </div>
+          <p>Selección de diamante, proporciones, confort y criterios de decisión.</p>
+          <a class="link" href="#contacto">Iniciar consulta →</a>
+        </article>
 
-        <div class="card" id="alianzas">
+        <article class="card" id="alianzas">
           <h3>Alianzas</h3>
-          <p>Perfiles, terminación y tolerancias de uso real y especificación de metal.</p>
-          <a class="chip" href="#contacto">Iniciar consulta →</a>
-        </div>
+          <p>Perfiles, terminación y tolerancias de uso real. Especificación de metal.</p>
+          <a class="link" href="#contacto">Iniciar consulta →</a>
+        </article>
 
-        <div class="card" id="solitarios">
+        <article class="card" id="solitarios">
           <h3>Solitarios</h3>
-          <p>Estructura, asiento y balance visual y compatibilidad con uso diario.</p>
-          <a class="chip" href="#contacto">Iniciar consulta →</a>
-        </div>
+          <p>Estructura, asiento y balance visual. Compatibilidad con uso diario.</p>
+          <a class="link" href="#contacto">Iniciar consulta →</a>
+        </article>
 
-        <div class="card" id="aros-colgantes">
+        <article class="card" id="aros-colgantes">
           <h3>Aros y colgantes</h3>
           <p>Terminación definida y tolerancias de uso real.</p>
-          <a class="chip" href="#contacto">Iniciar consulta →</a>
-        </div>
+          <a class="link" href="#contacto">Iniciar consulta →</a>
+        </article>
 
-        <div class="card" id="redisenio">
+        <article class="card" id="redisenio">
           <h3>Rediseño</h3>
           <p>Diagnóstico, propuesta, ejecución y documentación del trabajo.</p>
-          <a class="chip" href="#contacto">Iniciar consulta →</a>
-        </div>
+          <a class="link" href="#contacto">Iniciar consulta →</a>
+        </article>
       </div>
     </section>
 
     <!-- PROCESO -->
-    <section id="proceso" aria-label="Proceso">
-      <div class="sectionTitle">
+    <section id="proceso" class="section" aria-label="Proceso">
+      <div class="sectionHead">
         <h2>Proceso</h2>
-        <div class="hint">Proceso simple. Decisiones registradas. Sin sorpresas.</div>
       </div>
 
       <div class="steps">
-        <div class="step">
-          <div class="n">1</div>
-          <h4>Brief</h4>
-          <p>Medida, presupuesto y uso real.</p>
-        </div>
-        <div class="step">
-          <div class="n">2</div>
-          <h4>Selección de material</h4>
-          <p>Opciones aceptadas y rechazadas.</p>
-        </div>
-        <div class="step">
-          <div class="n">3</div>
-          <h4>Aprobación</h4>
-          <p>Condiciones y especificación.</p>
-        </div>
-        <div class="step">
-          <div class="n">4</div>
-          <h4>Fabricación</h4>
-          <p>Documentación incluida.</p>
-        </div>
+        <div class="step"><div class="n">1</div><div><h4>Brief</h4><p>Medida, presupuesto y uso real.</p></div></div>
+        <div class="step"><div class="n">2</div><div><h4>Selección de material</h4><p>Opciones aceptadas y rechazadas.</p></div></div>
+        <div class="step"><div class="n">3</div><div><h4>Aprobación</h4><p>Condiciones y especificación.</p></div></div>
+        <div class="step"><div class="n">4</div><div><h4>Fabricación</h4><p>Documentación incluida.</p></div></div>
       </div>
     </section>
 
     <!-- ESTÁNDARES -->
-    <section id="estandares" aria-label="Estándares">
-      <div class="sectionTitle">
+    <section id="estandares" class="section" aria-label="Estándares">
+      <div class="sectionHead">
         <h2>Estándares</h2>
-        <div class="hint">Resumen operativo. El detalle técnico se documenta en Gold Node.</div>
       </div>
 
       <div class="bullets">
-        <div class="bullet">
-          <div class="dot" aria-hidden="true"></div>
-          <div>
-            <b>Materiales naturales</b>
-            <span>Diamantes y gemas naturales.</span>
-          </div>
-        </div>
-
-        <div class="bullet">
-          <div class="dot" aria-hidden="true"></div>
-          <div>
-            <b>Verificación previa</b>
-            <span>Chequeo antes de fabricar.</span>
-          </div>
-        </div>
-
-        <div class="bullet">
-          <div class="dot" aria-hidden="true"></div>
-          <div>
-            <b>Certificado de metal</b>
-            <span>Laboratorio oficial cuando aplica.</span>
-          </div>
-        </div>
-
-        <div class="bullet">
-          <div class="dot" aria-hidden="true"></div>
-          <div>
-            <b>Documentación retenida</b>
-            <span>Para continuidad y mantenimiento.</span>
-          </div>
-        </div>
+        <div class="bullet"><div class="dot" aria-hidden="true"></div><div><b>Materiales naturales</b><span>Diamantes y gemas naturales.</span></div></div>
+        <div class="bullet"><div class="dot" aria-hidden="true"></div><div><b>Verificación previa</b><span>Chequeo antes de fabricar.</span></div></div>
+        <div class="bullet"><div class="dot" aria-hidden="true"></div><div><b>Certificado de metal</b><span>Laboratorio oficial cuando aplica.</span></div></div>
+        <div class="bullet"><div class="dot" aria-hidden="true"></div><div><b>Documentación retenida</b><span>Para continuidad y mantenimiento.</span></div></div>
       </div>
 
-      <!-- Link a Gold Node (ajustá si tu URL final es otra) -->
-      <div style="margin-top:12px;">
+      <div class="sectionFoot">
         <a class="chip" href="https://gold.lw-gems.com/" target="_blank" rel="noopener">Ver estándares en Gold Node →</a>
       </div>
     </section>
 
-    <!-- CONTACTO (FORMULARIO RESTAURADO) -->
-    <section id="contacto" aria-label="Contacto">
-      <div class="sectionTitle">
+    <!-- CONTACTO -->
+    <section id="contacto" class="section" aria-label="Contacto">
+      <div class="sectionHead">
         <h2>Contacto</h2>
         <div class="hint">Consulta breve. Te respondemos con opciones y próximos pasos.</div>
       </div>
 
       <div class="card">
-        <!-- Si usás FormSubmit, dejalo así. Si no, cambiamos action al endpoint real. -->
         <form method="post" action="https://formsubmit.co/info@lw-gems.com" autocomplete="on">
-          <!-- FormSubmit helpers (opcionales) -->
           <input type="hidden" name="_subject" value="LW Gems — Nueva consulta desde la web">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
@@ -315,7 +299,7 @@
             </div>
           </div>
 
-          <div style="margin-top:12px;">
+          <div class="formArea">
             <label for="detalle">Detalle (opcional)</label>
             <textarea id="detalle" name="detalle" placeholder="Medida (si aplica), referencias, fecha objetivo, etc."></textarea>
           </div>
@@ -327,10 +311,11 @@
         </form>
       </div>
     </section>
+
   </main>
 
-  <footer role="contentinfo">
-    <div class="container" style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+  <footer class="footer" role="contentinfo">
+    <div class="container footerInner">
       <div>© <span id="y"></span> LW Gems · Gold Node → <a href="https://gold.lw-gems.com/" target="_blank" rel="noopener">gold.lw-gems.com</a></div>
       <div class="smallLinks">
         <a href="#estandares">Estándares</a>
