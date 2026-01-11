@@ -361,3 +361,4 @@ textarea{ min-height: 84px; resize: vertical; }
   .bullets{ grid-template-columns: 1fr; }
   .formGrid{ grid-template-columns: 1fr; }
   .steps{ grid-template-columns: 1fr; }
+}
