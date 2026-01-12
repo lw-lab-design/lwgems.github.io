@@ -500,3 +500,101 @@ Ajustes finos tipografía + contención visual
   }
 
 }
+/* ===============================
+   MOBILE REFINEMENT · LW GEMS
+   Reduce relevancia visual
+   =============================== */
+@media (max-width: 520px){
+
+  /* H1 principal */
+  h1{
+    font-size: 34px;       /* antes ~38–40 */
+    line-height: 1.15;
+    font-weight: 700;
+  }
+
+  /* Subtítulo bajo H1 (Oro 18k · Diamantes...) */
+  .lead{
+    font-size: 16px;       /* baja relevancia */
+    line-height: 1.4;
+    color: #6b7280;        /* gris */
+  }
+
+  /* Frase bajo CTA ("Respuesta clara...") */
+  .miniNote{
+    font-size: 13px;
+    line-height: 1.4;
+    color: #9ca3af;
+  }
+
+  /* ====== TEXTOS AUXILIARES MARCADOS ====== */
+
+  /* Áreas de trabajo – subtítulo lateral */
+  .sectionHead .hint{
+    font-size: 13px;
+    line-height: 1.4;
+    color: #9ca3af;
+  }
+
+  /* Proceso – frase explicativa */
+  #proceso .hint{
+    font-size: 13px;
+    line-height: 1.4;
+    color: #9ca3af;
+  }
+
+  /* Estándares – frase “Criterios claros…” */
+  #estandares .hint{
+    font-size: 13px;
+    line-height: 1.4;
+    color: #9ca3af;
+  }
+
+  /* Contacto – frase introductoria */
+  #contacto .hint{
+    font-size: 13px;
+    line-height: 1.4;
+    color: #9ca3af;
+  }
+
+  /* ====== CARDS ====== */
+
+  /* Texto descriptivo dentro de cards */
+  .card p{
+    font-size: 14px;
+    line-height: 1.45;
+    color: #6b7280;
+  }
+
+  /* Link “Iniciar consulta →” dentro de cards */
+  .card .link{
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* ====== PASOS DE PROCESO ====== */
+
+  .step h4{
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .step p{
+    font-size: 13px;
+    line-height: 1.45;
+    color: #6b7280;
+  }
+
+  /* ====== ESTÁNDARES (lista en caja única) ====== */
+
+  .bullets span{
+    font-size: 13px;
+    line-height: 1.45;
+    color: #6b7280;
+  }
+
+  .bullets b{
+    font-weight: 600; /* mantiene jerarquía sin gritar */
+  }
+
+}
