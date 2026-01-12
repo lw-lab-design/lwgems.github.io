@@ -598,3 +598,13 @@ Ajustes finos tipografía + contención visual
   }
 
 }
+/* MOBILE – Ajuste final H1 */
+@media (max-width: 480px) {
+  h1,
+  .hero h1 {
+    font-size: 31px;      /* tamaño exacto aprox. de la foto */
+    line-height: 1.18;
+    font-weight: 700;     /* no ultra-bold */
+    letter-spacing: -0.01em;
+  }
+}
