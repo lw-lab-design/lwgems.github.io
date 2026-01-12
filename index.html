@@ -1,306 +1,633 @@
 <!doctype html>
-<html lang="es-AR">
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="content-language" content="es-AR">
-  <meta name="language" content="es-AR">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <!-- Evita que en móvil cargue “más chico” y tengas que hacer pinch-zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-  <title>LW Gems — Joyería fina verificada</title>
-  <meta name="description" content="Diamantes naturales · Oro 18k · Gemas naturales. Proceso documentado y verificación antes de fabricar. Consulta y cotización en 2 minutos.">
+  <title>LW Gems · Proceso verificado</title>
+  <meta name="description" content="Joyería fina con criterios claros. Oro 18k · Diamantes naturales · Gemas naturales." />
+  <meta name="robots" content="index, follow" />
 
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b1220;
+      --muted:#6b7280;
+      --muted-2:#4b5563; /* gris un poco más oscuro para “marcados” */
+      --line:#e5e7eb;
+      --chip:#f3f4f6;
+      --shadow: 0 1px 0 rgba(16,24,40,.04);
+      --radius:16px;
+      --radiusPill:999px;
 
-  <link rel="canonical" href="https://lwgems.github.io/">
-  <link rel="alternate" href="https://lwgems.github.io/" hreflang="es-AR">
-  <link rel="alternate" href="https://lwgems.github.io/" hreflang="x-default">
+      /* Tipografía base */
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-  <meta name="theme-color" content="#ffffff">
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{
+      max-width:1120px;
+      margin:0 auto;
+      padding:0 18px;
+    }
 
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+    /* Header / Nav */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:saturate(180%) blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 0;
+    }
+    .brand{
+      font-weight:700;
+      letter-spacing:.22em;
+      font-size:13px;
+    }
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      white-space:nowrap;
+    }
+    .btn, .btn-ghost{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:var(--radiusPill);
+      font-weight:600;
+      font-size:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .btn-ghost{
+      background:var(--chip);
+      border-color:transparent;
+      box-shadow:none;
+      color:var(--text);
+      font-weight:600;
+    }
 
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="LW Gems">
-  <meta name="application-name" content="LW Gems">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    /* Layout */
+    main{ padding:26px 0 34px; }
+    .grid-hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:start;
+    }
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="LW Gems">
-  <meta property="og:title" content="LW Gems — Joyería fina verificada">
-  <meta property="og:description" content="Diamantes naturales · Oro 18k · Gemas naturales. Proceso documentado y verificación antes de fabricar.">
-  <meta property="og:url" content="https://lwgems.github.io/">
-  <meta property="og:locale" content="es_AR">
+    /* Text */
+    .kicker{
+      font-size:12px;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 10px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:44px;
+      line-height:1.02;
+      letter-spacing:-.02em;
+      font-weight:800;
+    }
+    .subhead{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:18px; /* se pidió más chico */
+      font-weight:600;
+    }
+    .lede{
+      margin:10px 0 0;
+      color:var(--muted-2);
+      font-size:14px;   /* menos relevancia */
+      font-weight:600;
+    }
 
-  <meta property="og:image" content="https://lwgems.github.io/assets/img/og.jpeg">
-  <meta property="og:image:secure_url" content="https://lwgems.github.io/assets/img/og.jpeg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+    /* Cards */
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .card-pad{ padding:18px; }
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LW Gems — Joyería fina verificada">
-  <meta name="twitter:description" content="Materiales naturales y proceso documentado.">
-  <meta name="twitter:image" content="https://lwgems.github.io/assets/img/og.jpeg">
+    .card-title{
+      font-size:12px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 10px;
+      font-weight:700;
+    }
+    .card-row{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap:10px;
+      padding:10px 0;
+      border-top:1px solid var(--line);
+    }
+    .card-row:first-of-type{ border-top:0; padding-top:0; }
+    .label{
+      color:var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+    .value{
+      color:var(--muted-2);
+      font-weight:600;
+      font-size:14px;
+    }
+    .divider{ height:1px; background:var(--line); margin:14px 0; }
 
-  <!-- CSS (NO tocar ruta) -->
-  <link rel="stylesheet" href="./assets/css/site.css?v=2026-01-11-01">
+    .cta-row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:14px;
+      flex-wrap:wrap;
+    }
 
-  <!-- JSON-LD: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "@id":"https://lwgems.github.io/#org",
-    "name":"LW Gems",
-    "url":"https://lwgems.github.io/"
-  }
-  </script>
+    /* Sections */
+    .section{
+      margin-top:22px;
+    }
+    .section-head{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin:0 0 10px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.01em;
+    }
+    .section-note{
+      margin:0;
+      color:var(--muted-2);
+      font-size:13px; /* menos relevancia */
+      font-weight:600;
+    }
 
-  <!-- JSON-LD: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "@id":"https://lwgems.github.io/#website",
-    "url":"https://lwgems.github.io/",
-    "name":"LW Gems",
-    "publisher":{"@id":"https://lwgems.github.io/#org"},
-    "inLanguage":"es-AR"
-  }
-  </script>
+    /* Areas */
+    .grid-areas{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .mini h3{
+      margin:0 0 6px;
+      font-size:16px;
+      font-weight:750;
+      letter-spacing:-.01em;
+    }
+    .mini p{
+      margin:0 0 10px;
+      color:var(--muted-2);
+      font-size:14px;
+      font-weight:600;
+    }
+    .mini a{
+      color:var(--muted-2);
+      font-weight:700;
+      font-size:14px;
+    }
 
-  <!-- JSON-LD: WebPage (HOME) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "@id":"https://lwgems.github.io/#webpage",
-    "url":"https://lwgems.github.io/",
-    "name":"LW Gems — Joyería fina verificada",
-    "description":"Diamantes naturales · Oro 18k · Gemas naturales. Proceso documentado y verificación antes de fabricar.",
-    "isPartOf":{"@id":"https://lwgems.github.io/#website"},
-    "about":{"@id":"https://lwgems.github.io/#org"},
-    "publisher":{"@id":"https://lwgems.github.io/#org"},
-    "inLanguage":"es-AR"
-  }
-  </script>
+    /* Process */
+    .grid-process{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    .step{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .step-num{
+      width:34px; height:34px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-weight:800;
+      background:#fff;
+      flex:0 0 auto;
+    }
+    .step b{
+      display:block;
+      font-size:15px;
+      margin:0 0 4px;
+      font-weight:800;
+    }
+    .step span{
+      display:block;
+      color:var(--muted-2);
+      font-size:14px;
+      font-weight:600;
+    }
+
+    /* Standards – misma “caja”/jerarquía que Resumen Operativo */
+    .standards .card-row{ grid-template-columns: 170px 1fr; }
+    .standards .label{ font-weight:700; }
+    .standards .value{ font-weight:600; }
+
+    /* Contact form */
+    form{ margin-top:10px; }
+    .form-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .field{ display:flex; flex-direction:column; gap:7px; }
+    .field label{
+      color:var(--muted);
+      font-size:13px; /* menos relevancia */
+      font-weight:700;
+    }
+    input, select, textarea{
+      width:100%;
+      font: inherit;
+      font-size:16px; /* importante para iOS: evita zoom raro en inputs */
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      outline:none;
+    }
+
+    /* MUY IMPORTANTE: no romper “Seleccionar” en iOS (no quitar appearance) */
+    select{
+      -webkit-appearance: menulist;
+      appearance: auto;
+      background-image: none;
+    }
+
+    textarea{ min-height:110px; resize:vertical; }
+    .form-actions{
+      margin-top:14px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .hint{
+      margin:0;
+      color:var(--muted-2);   /* gris más oscuro */
+      font-size:12px;         /* menos relevancia */
+      font-weight:600;
+    }
+
+    /* Footer (sin Gold Node) */
+    footer{
+      border-top:1px solid var(--line);
+      margin-top:28px;
+      padding:18px 0 26px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .foot-row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .foot-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      color:var(--muted-2);
+      font-weight:600;
+    }
+
+    /* =========================
+       MOBILE (solo versión móvil)
+       ========================= */
+    @media (max-width: 680px){
+      .wrap{ padding:0 16px; }
+      .grid-hero{ grid-template-columns:1fr; }
+      h1{
+        font-size:40px; /* título un poco más chico en móvil */
+      }
+      .subhead{
+        font-size:16px; /* subtítulo más chico */
+        font-weight:600;
+      }
+      .lede{ font-size:13px; } /* “Respuesta clara...” menor relevancia */
+
+      .grid-areas{ grid-template-columns:1fr; }
+      .grid-process{ grid-template-columns:1fr; }
+
+      .section-head{
+        flex-direction:row;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:10px;
+      }
+      .section-note{ font-size:12px; } /* textos marcados más chicos */
+
+      .card-pad{ padding:16px; }
+      .standards .card-row{ grid-template-columns: 1fr; gap:6px; }
+      .standards .label{ font-size:14px; }
+      .standards .value{ font-size:14px; }
+
+      .form-grid{ grid-template-columns:1fr; }
+      .btn, .btn-ghost{ padding:10px 12px; font-size:14px; }
+    }
+
+    /* =========================
+       iPad / Tablet (ajustes finos)
+       - H1 5–8% más chico
+       - font-weight 1 punto abajo
+       - cards centradas y no a lo ancho infinito
+       - menos padding vertical en cards
+       ========================= */
+    @media (min-width: 768px) and (max-width: 1024px){
+      .wrap{ max-width:980px; }
+      h1{
+        font-size: 41px;   /* ~6–7% menos que 44 */
+        font-weight:700;   /* 1 “punto” abajo */
+      }
+      .card-pad{ padding:16px; } /* apenas menos vertical */
+      .grid-hero{ grid-template-columns: 1.15fr .85fr; }
+
+      /* Centrar bloques grandes (cards) en iPad */
+      .section .card{
+        max-width: 980px;
+        margin-left:auto;
+        margin-right:auto;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#content">Saltar al contenido</a>
+  <!-- NAV: en móvil solo LW GEMS + Tienda → + Iniciar consulta (en ese orden) -->
+  <header class="topbar">
+    <div class="wrap">
+      <div class="nav" role="navigation" aria-label="Navegación principal">
+        <div class="brand">LW GEMS</div>
 
-  <!-- TOPBAR (simplificada: LW GEMS · Tienda → · Iniciar consulta) -->
-  <header class="topbar" role="banner">
-    <div class="container">
-      <div class="topbarInner">
-        <div class="brand">
-          <a class="brandName" href="/" aria-label="LW Gems Home">LW GEMS</a>
+        <div class="nav-actions">
+          <a class="btn-ghost" href="https://shop.lw-gems.com" aria-label="Ir a la tienda online">
+            Tienda <span aria-hidden="true">→</span>
+          </a>
+          <a class="btn" href="#contacto" aria-label="Iniciar consulta">Iniciar consulta</a>
         </div>
-
-        <nav class="nav" aria-label="Primary">
-          <a class="navShop" href="https://shop.lw-gems.com" target="_blank" rel="noopener">Tienda →</a>
-          <a class="navCta" href="#contacto">Iniciar consulta</a>
-        </nav>
       </div>
     </div>
   </header>
 
-  <main id="content" class="container" role="main">
+  <main>
+    <div class="wrap">
+      <section class="grid-hero" aria-label="Hero">
+        <div>
+          <p class="kicker">LW GEMS</p>
+          <h1>Alianzas y anillos de compromiso.</h1>
 
-    <!-- HERO -->
-    <section class="hero" aria-label="Hero">
-      <div class="heroMain">
-        <div class="kicker">LW GEMS</div>
+          <!-- Subtítulo: borrar “Decisiones claras.” -->
+          <p class="subhead">Oro 18k · Diamantes naturales · Gemas naturales.</p>
 
-        <h1>Alianzas y anillos de compromiso.</h1>
-
-        <!-- Subtítulo: sin “Decisiones claras.” -->
-        <p class="lead">Oro 18k · Diamantes naturales · Gemas naturales.</p>
-
-        <div class="ctaRow">
-          <a class="btn" href="#contacto">Iniciar consulta</a>
-          <span class="miniNote">Respuesta clara, con opciones concretas.</span>
-        </div>
-      </div>
-
-      <!-- Resumen operativo (se mantiene) -->
-      <aside class="panel" aria-label="Resumen operativo">
-        <div class="panelTitle">Resumen operativo</div>
-
-        <div class="kv">
-          <div class="k">Pago</div>
-          <div class="v">Cuotas o pago único. Contado con descuento cuando aplica.</div>
-        </div>
-
-        <div class="kv">
-          <div class="k">Tiempos</div>
-          <div class="v">10–25 días hábiles según complejidad y disponibilidad.</div>
-        </div>
-
-        <div class="panelHr" role="separator" aria-hidden="true"></div>
-
-        <div class="ctaRow" style="margin-top:12px">
-          <a class="btn btnGhost" href="https://shop.lw-gems.com" target="_blank" rel="noopener">Ir a la tienda online →</a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ÁREAS (solo 2) -->
-    <section id="trabajos" class="section" aria-label="Áreas de trabajo">
-      <div class="sectionHead">
-        <h2>Áreas de trabajo</h2>
-        <div class="hint">Selección, especificación y tolerancias de uso real.</div>
-      </div>
-
-      <div class="grid3">
-        <article class="card" id="anillos-compromiso">
-          <h3>Anillos de compromiso</h3>
-          <p>Selección de diamante, proporciones, confort y criterios de decisión.</p>
-          <a class="link" href="#contacto">Iniciar consulta →</a>
-        </article>
-
-        <article class="card" id="alianzas">
-          <h3>Alianzas</h3>
-          <p>Perfiles, terminación y tolerancias de uso real. Especificación de metal.</p>
-          <a class="link" href="#contacto">Iniciar consulta →</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- PROCESO -->
-    <section id="proceso" class="section" aria-label="Proceso">
-      <div class="sectionHead">
-        <h2>Proceso</h2>
-        <div class="hint">Proceso simple. Decisiones registradas. Sin sorpresas.</div>
-      </div>
-
-      <div class="steps">
-        <div class="step"><div class="n">1</div><div><h4>Brief</h4><p>Medida, presupuesto y uso real.</p></div></div>
-        <div class="step"><div class="n">2</div><div><h4>Selección de material</h4><p>Opciones aceptadas y rechazadas.</p></div></div>
-        <div class="step"><div class="n">3</div><div><h4>Aprobación</h4><p>Condiciones y especificación.</p></div></div>
-        <div class="step"><div class="n">4</div><div><h4>Fabricación</h4><p>Documentación incluida.</p></div></div>
-      </div>
-    </section>
-
-    <!-- ESTÁNDARES (una sola caja tipo “Resumen operativo”, sin “Documentación retenida”, sin link a Gold Node) -->
-    <section id="estandares" class="section" aria-label="Estándares">
-      <div class="sectionHead">
-        <h2>Estándares</h2>
-        <div class="hint">Criterios claros antes de fabricar.</div>
-      </div>
-
-      <div class="panel" aria-label="Estándares (resumen)">
-        <div class="kv">
-          <div class="k">Materiales naturales</div>
-          <div class="v">Diamantes y gemas naturales.</div>
-        </div>
-
-        <div class="kv">
-          <div class="k">Verificación previa</div>
-          <div class="v">Chequeo antes de fabricar.</div>
-        </div>
-
-        <div class="kv" style="padding-bottom:0">
-          <div class="k">Certificado de metal</div>
-          <div class="v">Laboratorio oficial cuando aplica.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACTO (mantiene selects; no tocamos estructura) -->
-    <section id="contacto" class="section" aria-label="Contacto">
-      <div class="sectionHead">
-        <h2>Contacto</h2>
-        <div class="hint">Consulta breve. Te respondemos con opciones y próximos pasos.</div>
-      </div>
-
-      <div class="card">
-        <form method="post" action="https://formsubmit.co/info@lw-gems.com" autocomplete="on">
-          <input type="hidden" name="_subject" value="LW Gems — Nueva consulta desde la web">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-
-          <div class="formGrid">
-            <div>
-              <label for="material">Material</label>
-              <select id="material" name="material" required>
-                <option value="" selected disabled>Seleccionar</option>
-                <option>Oro 18k</option>
-                <option>Diamante natural</option>
-                <option>Otro</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="pieza">Tipo de pieza</label>
-              <select id="pieza" name="pieza" required>
-                <option value="" selected disabled>Seleccionar</option>
-                <option>Anillo de compromiso</option>
-                <option>Alianzas</option>
-                <option>Otro</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="etapa">Etapa</label>
-              <select id="etapa" name="etapa" required>
-                <option value="" selected disabled>Seleccionar</option>
-                <option>Idea inicial</option>
-                <option>Comparando opciones</option>
-                <option>Listo para avanzar</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="presupuesto">Presupuesto</label>
-              <input id="presupuesto" name="presupuesto" type="text" placeholder="ARS o USD" required>
-            </div>
-
-            <div>
-              <label for="nombre">Nombre</label>
-              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
-            </div>
-
-            <div>
-              <label for="contactoTxt">Contacto</label>
-              <input id="contactoTxt" name="contacto" type="text" placeholder="Email o WhatsApp" required>
-            </div>
+          <div class="cta-row">
+            <a class="btn" href="#contacto">Iniciar consulta</a>
           </div>
 
-          <div class="formArea">
-            <label for="detalle">Detalle (opcional)</label>
-            <textarea id="detalle" name="detalle" placeholder="Medida (si aplica), referencias, fecha objetivo, etc."></textarea>
+          <!-- Marcado: menor relevancia -->
+          <p class="lede">Respuesta clara, con opciones concretas.</p>
+        </div>
+
+        <!-- Resumen Operativo (card patrón) -->
+        <aside class="card card-pad" aria-label="Resumen operativo">
+          <div class="card-title">Resumen operativo</div>
+
+          <div class="card-row">
+            <div class="label">Pago</div>
+            <div class="value">Cuotas o pago único. Contado con descuento cuando aplica.</div>
           </div>
 
-          <div class="formFooter">
-            <button class="btn" type="submit">Enviar consulta</button>
-            <div class="miniNote">Si tu consulta es urgente, indicá una fecha objetivo.</div>
+          <div class="card-row">
+            <div class="label">Tiempos</div>
+            <div class="value">10–25 días hábiles según complejidad y disponibilidad.</div>
           </div>
-        </form>
-      </div>
-    </section>
 
-  </main>
+          <div class="divider"></div>
 
-  <!-- FOOTER (sin Gold Node) -->
-  <footer class="footer" role="contentinfo">
-    <div class="container footerInner">
-      <div>© <span id="y"></span> LW Gems · Tienda online</div>
-      <div class="smallLinks">
-        <a href="https://shop.lw-gems.com" target="_blank" rel="noopener">Tienda online</a>
-        <a href="#estandares">Estándares</a>
-        <a href="#contacto">Contacto</a>
-        <a href="mailto:info@lw-gems.com">info@lw-gems.com</a>
-      </div>
+          <a class="btn-ghost" href="https://shop.lw-gems.com">
+            Ir a la tienda online <span aria-hidden="true">→</span>
+          </a>
+        </aside>
+      </section>
+
+      <!-- Áreas de trabajo -->
+      <section class="section" aria-label="Áreas de trabajo">
+        <div class="section-head">
+          <h2>Áreas de trabajo</h2>
+          <!-- Marcado: menor relevancia -->
+          <p class="section-note">Selección, especificación y tolerancias de uso real.</p>
+        </div>
+
+        <div class="grid-areas">
+          <article class="card card-pad mini">
+            <h3>Anillos de compromiso</h3>
+            <p>Selección de diamante, proporciones, confort y criterios de decisión.</p>
+            <a href="#contacto">Iniciar consulta <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="card card-pad mini">
+            <h3>Alianzas</h3>
+            <p>Perfiles, terminación y tolerancias de uso real. Especificación de metal.</p>
+            <a href="#contacto">Iniciar consulta <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Proceso -->
+      <section class="section" aria-label="Proceso">
+        <div class="section-head">
+          <h2>Proceso</h2>
+          <!-- Marcado: menor relevancia (más chico) -->
+          <p class="section-note">Proceso simple. Decisiones registradas. Sin sorpresas.</p>
+        </div>
+
+        <div class="grid-process">
+          <article class="card card-pad step">
+            <div class="step-num">1</div>
+            <div>
+              <b>Brief</b>
+              <span>Medida, presupuesto y uso real.</span>
+            </div>
+          </article>
+
+          <article class="card card-pad step">
+            <div class="step-num">2</div>
+            <div>
+              <b>Selección de material</b>
+              <span>Opciones aceptadas y rechazadas.</span>
+            </div>
+          </article>
+
+          <article class="card card-pad step">
+            <div class="step-num">3</div>
+            <div>
+              <b>Aprobación</b>
+              <span>Condiciones y especificación.</span>
+            </div>
+          </article>
+
+          <article class="card card-pad step">
+            <div class="step-num">4</div>
+            <div>
+              <b>Fabricación</b>
+              <span>Documentación incluida.</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Estándares: sin “Documentación retenida” y sin link a Gold Node -->
+      <section class="section standards" aria-label="Estándares">
+        <div class="section-head">
+          <h2>Estándares</h2>
+          <!-- Marcado: menor relevancia -->
+          <p class="section-note">Criterios claros antes de fabricar.</p>
+        </div>
+
+        <div class="card card-pad">
+          <div class="card-row">
+            <div class="label">Materiales naturales</div>
+            <div class="value">Diamantes y gemas naturales.</div>
+          </div>
+
+          <div class="card-row">
+            <div class="label">Verificación previa</div>
+            <div class="value">Chequeo antes de fabricar.</div>
+          </div>
+
+          <div class="card-row">
+            <div class="label">Certificado de metal</div>
+            <div class="value">Laboratorio oficial cuando aplica.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section class="section" id="contacto" aria-label="Contacto">
+        <div class="section-head">
+          <h2>Contacto</h2>
+          <!-- Marcado: menor relevancia -->
+          <p class="section-note">Consulta breve. Te respondemos con opciones y próximos pasos.</p>
+        </div>
+
+        <div class="card card-pad">
+          <form action="#" method="post">
+            <div class="form-grid">
+              <div class="field">
+                <label for="material">Material</label>
+                <select id="material" name="material" required>
+                  <option value="" selected disabled>Seleccionar</option>
+                  <option>Oro 18k</option>
+                  <option>Platino</option>
+                  <option>Diamante natural</option>
+                  <option>Gemas naturales</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="tipo">Tipo de pieza</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="" selected disabled>Seleccionar</option>
+                  <option>Anillo de compromiso</option>
+                  <option>Alianzas</option>
+                  <option>Rediseño</option>
+                  <option>Otra pieza</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="etapa">Etapa</label>
+                <select id="etapa" name="etapa" required>
+                  <option value="" selected disabled>Seleccionar</option>
+                  <option>Idea / referencia</option>
+                  <option>Definición de material</option>
+                  <option>Revisión / ajuste</option>
+                  <option>Lista para fabricar</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="presupuesto">Presupuesto</label>
+                <input id="presupuesto" name="presupuesto" placeholder="ARS o USD" inputmode="text" />
+              </div>
+
+              <div class="field">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="nombre" placeholder="Tu nombre" />
+              </div>
+
+              <div class="field">
+                <label for="contacto">Contacto</label>
+                <input id="contacto" name="contacto" placeholder="Email o WhatsApp" />
+              </div>
+
+              <div class="field" style="grid-column: 1 / -1;">
+                <label for="detalle">Detalle (opcional)</label>
+                <textarea id="detalle" name="detalle" placeholder="Medida (si aplica), referencias, fecha objetivo, etc."></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn" type="submit">Enviar consulta</button>
+              <!-- Marcado: menor relevancia + gris más oscuro -->
+              <p class="hint">Si tu consulta es urgente, indicá una fecha objetivo.</p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <footer aria-label="Footer">
+        <div class="wrap">
+          <div class="foot-row">
+            <div>© 2026 LW Gems · Tienda online</div>
+            <nav class="foot-links" aria-label="Enlaces">
+              <a href="https://shop.lw-gems.com">Tienda online</a>
+              <a href="#contacto">Contacto</a>
+              <a href="mailto:info@lw-gems.com">info@lw-gems.com</a>
+            </nav>
+          </div>
+        </div>
+      </footer>
     </div>
-  </footer>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  </main>
 </body>
 </html>
