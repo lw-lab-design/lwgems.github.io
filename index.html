@@ -8,13 +8,16 @@
 
   <style>
     :root{
-      --ink:#0f172a;
-      --muted:#6b7280;     /* valor */
-      --muted2:#9aa3af;    /* label / kicker */
-      --line:#e5e7eb;
       --bg:#ffffff;
-      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#6b7280;
+      --muted2:#9aa3af;
+
+      --line:#e5e7eb;
+      --chip:#f3f4f6;
+
       --radius:18px;
+      --container: 980px;
     }
 
     *{box-sizing:border-box}
@@ -27,30 +30,29 @@
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
-
     a{color:inherit}
 
     .container{
-      width:min(100%, 980px);
+      width:min(100%, var(--container));
       margin:0 auto;
       padding:18px 16px 44px;
     }
 
-    /* Topbar (igual a referencia) */
+    /* Topbar */
     .topbar{
       position:sticky;
       top:0;
       z-index:50;
       background:rgba(255,255,255,.92);
       backdrop-filter:saturate(150%) blur(10px);
-      border-bottom:1px solid rgba(229,231,235,.7);
+      border-bottom:1px solid rgba(229,231,235,.9);
     }
     .topbar-inner{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:12px;
       padding:12px 16px;
-      max-width:980px;
+      max-width:var(--container);
       margin:0 auto;
     }
     .brand{
@@ -66,6 +68,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      gap:8px;
       padding:11px 14px;
       border-radius:999px;
       border:1px solid var(--line);
@@ -76,6 +79,7 @@
       line-height:1;
       white-space:nowrap;
     }
+    .btn:hover{background:#fafafa}
     .nav-link{
       text-decoration:none;
       font-weight:600;
@@ -83,90 +87,93 @@
       white-space:nowrap;
       padding:10px 4px;
     }
+    .nav-link:hover{color:var(--ink)}
 
-    /* HERO */
-    .hero{padding-top:28px}
-    .hero h1{
+    /* Hero */
+    .hero{padding-top:26px}
+    h1{
       margin:0;
-      font-size:34px;
-      line-height:1.02;
+      font-size:42px;
+      line-height:1.06;
       letter-spacing:-0.02em;
       font-weight:700;
     }
-    .hero .subtitle{
+    .subtitle{
       margin:10px 0 0;
-      font-size:16px;
+      font-size:18px;
       line-height:1.45;
-      font-weight:400;
       color:var(--muted);
+      font-weight:400;
+      max-width:56ch;
     }
     .cta-row{
       margin-top:16px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
     }
     .micro{
       margin:10px 0 0;
-      font-size:14px;
+      font-size:16px;
       line-height:1.45;
       color:var(--muted);
       font-weight:400;
     }
 
-    /* ===== MASTER BOX SYSTEM (la caja de referencia) ===== */
-    .section{ margin-top:18px; } /* compacto: sin separación grande */
-    .box{
-      background:var(--card);
+    /* Cards */
+    .section{margin-top:18px}
+    .card{
+      background:#fff;
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px 16px;
     }
 
-    /* Kicker inside box */
+    /* Card title (siempre adentro de la caja) */
     .kicker{
       font-size:13px;
       letter-spacing:.32em;
       text-transform:uppercase;
       color:var(--muted2);
       font-weight:700;
-      margin:0 0 10px;
+      margin:0 0 12px;
     }
     .kicker.rule{
-      padding-bottom:10px;
+      padding-bottom:12px;
       border-bottom:1px solid var(--line);
       margin-bottom:14px;
     }
 
-    /* Key/Value rows (igual Pago/Tiempos) */
+    /* Key/Value rows (Pago/Tiempos style) */
     .kv{
       display:grid;
       grid-template-columns: 92px 1fr;
       gap:14px;
       align-items:start;
-      padding:6px 0;
+      padding:8px 0;
     }
     .kv + .kv{
       border-top:1px solid var(--line);
       padding-top:14px;
       margin-top:6px;
     }
-    .label{
+    .k{
       font-size:14px;
       color:var(--muted2);
       font-weight:600;
     }
-    .value{
+    .v{
       font-size:18px;
       line-height:1.35;
       color:var(--muted);
       font-weight:600;
     }
 
-    /* Button row inside box */
-    .box-actions{
+    .card-actions{
       margin-top:14px;
       padding-top:14px;
       border-top:1px solid var(--line);
-      display:flex;
-      justify-content:flex-start;
     }
     .btn.ghost{
       background:#fff;
@@ -175,60 +182,54 @@
       font-weight:600;
     }
 
-    /* Areas inside box */
-    .cards{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-      margin-top:2px;
+    /* Areas (dentro de una sola caja) */
+    .area-item{
+      padding:14px 0;
     }
-    .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:18px 18px;
-      background:#fff;
+    .area-item + .area-item{
+      border-top:1px solid var(--line);
+      padding-top:16px;
+      margin-top:6px;
     }
-    .card h3{
+    .area-title{
       margin:0;
-      font-size:18px;
+      font-size:20px;
+      letter-spacing:-0.01em;
       font-weight:700;
-      letter-spacing:-.01em;
       color:var(--ink);
     }
-    .card p{
+    .area-desc{
       margin:8px 0 0;
-      font-size:15px;
+      font-size:16px;
       line-height:1.5;
       color:var(--muted);
       font-weight:400;
+      max-width:62ch;
     }
-    .card a{
+    .area-link{
       display:inline-flex;
       align-items:center;
       gap:10px;
       margin-top:12px;
-      font-size:15px;
+      font-size:16px;
       color:var(--muted);
       text-decoration:none;
       font-weight:600;
     }
+    .area-link:hover{color:var(--ink)}
 
-    /* Steps inside box */
-    .steps{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:12px;
-      margin-top:2px;
-    }
+    /* Process (dentro de una sola caja) */
     .step{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:16px 16px;
       display:grid;
       grid-template-columns:56px 1fr;
       gap:14px;
       align-items:start;
-      background:#fff;
+      padding:14px 0;
+    }
+    .step + .step{
+      border-top:1px solid var(--line);
+      padding-top:16px;
+      margin-top:6px;
     }
     .badge{
       width:44px;height:44px;
@@ -241,29 +242,27 @@
       font-weight:700;
       background:#fff;
     }
-    .step h4{
+    .step h3{
       margin:0;
-      font-size:18px;
+      font-size:20px;
       font-weight:700;
-      color:var(--ink);
+      letter-spacing:-0.01em;
     }
     .step p{
       margin:6px 0 0;
-      font-size:15px;
+      font-size:16px;
       line-height:1.5;
       color:var(--muted);
       font-weight:400;
     }
 
-    /* Standards: mismo sistema, solo cambia ancho label */
-    .kv.wide{ grid-template-columns: 120px 1fr; }
+    /* Standards label width */
+    .standards .kv{ grid-template-columns: 120px 1fr; }
 
-    /* Form inside box */
-    .form{
-      margin-top:2px;
-    }
+    /* Form (dentro de caja) */
+    form{margin:0}
     .field{margin-top:14px}
-    .field label{
+    label{
       display:block;
       font-size:14px;
       color:var(--muted2);
@@ -281,15 +280,14 @@
       color:var(--ink);
     }
     textarea{min-height:120px; resize:vertical}
-
+    .submit-row{margin-top:16px}
     .btn.primary{
       width:100%;
-      margin-top:16px;
       padding:14px 16px;
       font-size:16px;
       font-weight:700;
-      background:#f3f4f6;
-      border:1px solid #f3f4f6;
+      background:var(--chip);
+      border-color:transparent;
       color:var(--ink);
     }
     .hint{
@@ -302,13 +300,14 @@
 
     /* Footer */
     .footer{
-      margin-top:22px;
-      padding-top:18px;
+      margin-top:18px;
+      padding-top:16px;
       border-top:1px solid var(--line);
       color:var(--muted2);
       font-size:14px;
     }
     .footer a{color:var(--muted); text-decoration:none; font-weight:600}
+    .footer a:hover{color:var(--ink)}
     .footer-nav{
       display:flex;
       flex-wrap:wrap;
@@ -316,17 +315,24 @@
       margin-top:10px;
     }
 
-    /* Mobile exact */
-    @media (max-width:480px){
-      .hero h1{font-size:34px}
-      .hero .subtitle{font-size:16px}
-      .value{font-size:18px}
+    /* Mobile */
+    @media (max-width: 480px){
+      h1{font-size:34px; line-height:1.12}
+      .subtitle{font-size:16px}
+      .micro{font-size:16px}
+      .v{font-size:18px}
+      .standards .kv{ grid-template-columns: 110px 1fr; }
+    }
+
+    /* iPad: contención visual (no full-width barato) */
+    @media (min-width: 768px) and (max-width: 1024px){
+      .container{width:min(100%, 860px)}
+      .card{padding:20px 18px}
     }
   </style>
 </head>
 
 <body>
-
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">LW GEMS</div>
@@ -337,7 +343,7 @@
   </header>
 
   <main class="container">
-
+    <!-- HERO -->
     <section class="hero">
       <h1>Alianzas y anillos de compromiso.</h1>
       <p class="subtitle">Oro 18k · Diamantes naturales · Decisiones claras.</p>
@@ -349,118 +355,115 @@
       <p class="micro">Respuesta clara, con opciones concretas.</p>
     </section>
 
-    <!-- RESUMEN OPERATIVO (MASTER) -->
+    <!-- RESUMEN OPERATIVO -->
     <section class="section" id="resumen">
-      <div class="box">
+      <div class="card">
         <div class="kicker rule">Resumen operativo</div>
 
         <div class="kv">
-          <div class="label">Pago</div>
-          <div class="value">Cuotas o pago único. Contado con descuento cuando aplica.</div>
+          <div class="k">Pago</div>
+          <div class="v">Cuotas o pago único. Contado con descuento cuando aplica.</div>
         </div>
 
         <div class="kv">
-          <div class="label">Tiempos</div>
-          <div class="value">10–25 días hábiles según complejidad y disponibilidad.</div>
+          <div class="k">Tiempos</div>
+          <div class="v">10–25 días hábiles según complejidad y disponibilidad.</div>
         </div>
 
-        <div class="box-actions">
-          <a class="btn ghost" href="https://shop.lw-gems.com" rel="nofollow">Ir a la tienda online →</a>
+        <div class="card-actions">
+          <a class="btn ghost" href="https://shop.lw-gems.com" rel="nofollow">
+            Ir a la tienda online <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ÁREAS DE TRABAJO (MISMA CAJA + contenido dentro) -->
+    <!-- ÁREAS DE TRABAJO (todo adentro de UNA caja) -->
     <section class="section" id="areas">
-      <div class="box">
+      <div class="card">
         <div class="kicker">Áreas de trabajo</div>
 
-        <div class="cards">
-          <div class="card">
-            <h3>Anillos de compromiso</h3>
-            <p>Selección de diamante, proporciones, confort y criterios de decisión.</p>
-            <a href="#contacto">Iniciar consulta →</a>
-          </div>
+        <div class="area-item">
+          <h2 class="area-title">Anillos de compromiso</h2>
+          <p class="area-desc">Selección de diamante, proporciones, confort y criterios de decisión.</p>
+          <a class="area-link" href="#contacto">Iniciar consulta <span aria-hidden="true">→</span></a>
+        </div>
 
-          <div class="card">
-            <h3>Alianzas</h3>
-            <p>Perfiles, terminación y tolerancias de uso real. Especificación de metal.</p>
-            <a href="#contacto">Iniciar consulta →</a>
-          </div>
+        <div class="area-item">
+          <h2 class="area-title">Alianzas</h2>
+          <p class="area-desc">Perfiles, terminación y tolerancias de uso real. Especificación de metal.</p>
+          <a class="area-link" href="#contacto">Iniciar consulta <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <!-- PROCESO SIMPLE (MISMA CAJA) -->
+    <!-- PROCESO SIMPLE (todo adentro de UNA caja) -->
     <section class="section" id="proceso">
-      <div class="box">
+      <div class="card">
         <div class="kicker">Proceso simple</div>
 
-        <div class="steps">
-          <div class="step">
-            <div class="badge">1</div>
-            <div>
-              <h4>Brief</h4>
-              <p>Medida, presupuesto y uso real.</p>
-            </div>
+        <div class="step">
+          <div class="badge">1</div>
+          <div>
+            <h3>Brief</h3>
+            <p>Medida, presupuesto y uso real.</p>
           </div>
+        </div>
 
-          <div class="step">
-            <div class="badge">2</div>
-            <div>
-              <h4>Selección de material</h4>
-              <p>Opciones aceptadas y rechazadas.</p>
-            </div>
+        <div class="step">
+          <div class="badge">2</div>
+          <div>
+            <h3>Selección de material</h3>
+            <p>Opciones aceptadas y rechazadas.</p>
           </div>
+        </div>
 
-          <div class="step">
-            <div class="badge">3</div>
-            <div>
-              <h4>Aprobación</h4>
-              <p>Condiciones y especificación.</p>
-            </div>
+        <div class="step">
+          <div class="badge">3</div>
+          <div>
+            <h3>Aprobación</h3>
+            <p>Condiciones y especificación.</p>
           </div>
+        </div>
 
-          <div class="step">
-            <div class="badge">4</div>
-            <div>
-              <h4>Fabricación</h4>
-              <p>Documentación incluida.</p>
-            </div>
+        <div class="step">
+          <div class="badge">4</div>
+          <div>
+            <h3>Fabricación</h3>
+            <p>Documentación incluida.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ESTÁNDARES (MISMA CAJA / MISMA TIPOGRAFÍA) -->
+    <!-- ESTÁNDARES (todo adentro de UNA caja) -->
     <section class="section" id="estandares">
-      <div class="box">
-        <div class="kicker">Estándares</div>
+      <div class="card standards">
         <div class="kicker rule">Estándares operativos</div>
 
-        <div class="kv wide">
-          <div class="label">Materiales</div>
-          <div class="value">Diamantes y gemas naturales.</div>
+        <div class="kv">
+          <div class="k">Materiales</div>
+          <div class="v">Diamantes y gemas naturales.</div>
         </div>
 
-        <div class="kv wide">
-          <div class="label">Verificación</div>
-          <div class="value">Chequeo antes de fabricar.</div>
+        <div class="kv">
+          <div class="k">Verificación</div>
+          <div class="v">Chequeo antes de fabricar.</div>
         </div>
 
-        <div class="kv wide">
-          <div class="label">Metal</div>
-          <div class="value">Laboratorio oficial cuando aplica.</div>
+        <div class="kv">
+          <div class="k">Metal</div>
+          <div class="v">Laboratorio oficial cuando aplica.</div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACTO (MISMA CAJA) -->
+    <!-- CONTACTO (todo adentro de UNA caja) -->
     <section class="section" id="contacto">
-      <div class="box">
+      <div class="card">
         <div class="kicker">Contacto</div>
 
-        <form class="form" action="#" method="post">
+        <form action="#" method="post">
           <div class="field">
             <label for="material">Material</label>
             <select id="material" name="material">
@@ -503,8 +506,8 @@
           </div>
 
           <div class="field">
-            <label for="contacto_in">Contacto</label>
-            <input id="contacto_in" name="contacto" placeholder="Email o WhatsApp" />
+            <label for="contactoDato">Contacto</label>
+            <input id="contactoDato" name="contacto" placeholder="Email o WhatsApp" />
           </div>
 
           <div class="field">
@@ -512,22 +515,23 @@
             <textarea id="detalle" name="detalle" placeholder="Medida (si aplica), referencias, fecha objetivo, etc."></textarea>
           </div>
 
-          <button class="btn primary" type="submit">Enviar consulta</button>
-          <p class="hint">Si tu consulta es urgente, indicá una fecha objetivo.</p>
+          <div class="submit-row">
+            <button class="btn primary" type="submit">Enviar consulta</button>
+            <p class="hint">Si tu consulta es urgente, indicá una fecha objetivo.</p>
+          </div>
         </form>
+
+        <footer class="footer">
+          <div>© 2026 LW Gems · Tienda online</div>
+          <div class="footer-nav">
+            <a href="https://shop.lw-gems.com" rel="nofollow">Tienda online</a>
+            <a href="#estandares">Estándares</a>
+            <a href="#contacto">Contacto</a>
+            <a href="mailto:info@lw-gems.com">info@lw-gems.com</a>
+          </div>
+        </footer>
       </div>
-
-      <footer class="footer">
-        <div>© 2026 LW Gems · Tienda online</div>
-        <div class="footer-nav">
-          <a href="https://shop.lw-gems.com" rel="nofollow">Tienda online</a>
-          <a href="#estandares">Estándares</a>
-          <a href="#contacto">Contacto</a>
-          <a href="mailto:info@lw-gems.com">info@lw-gems.com</a>
-        </div>
-      </footer>
     </section>
-
   </main>
 </body>
 </html>
