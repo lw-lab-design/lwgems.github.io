@@ -3,631 +3,726 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <!-- Evita que en móvil cargue “más chico” y tengas que hacer pinch-zoom -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
   <title>LW Gems · Proceso verificado</title>
-  <meta name="description" content="Joyería fina con criterios claros. Oro 18k · Diamantes naturales · Gemas naturales." />
-  <meta name="robots" content="index, follow" />
 
   <style>
+    /* =========================
+       LW · Clean / Grey scale
+       - Mobile first
+       - iPad: tipografía y ancho centrado
+       ========================= */
+
     :root{
       --bg:#ffffff;
-      --text:#0b1220;
-      --muted:#6b7280;
-      --muted-2:#4b5563; /* gris un poco más oscuro para “marcados” */
+      --ink:#0b1220;
+      --muted:#6b7280;          /* gris medio */
+      --muted2:#4b5563;         /* gris más oscuro (para aclarar jerarquía sin “azul”) */
       --line:#e5e7eb;
-      --chip:#f3f4f6;
-      --shadow: 0 1px 0 rgba(16,24,40,.04);
-      --radius:16px;
-      --radiusPill:999px;
+      --line2:#eef2f7;
+      --card:#ffffff;
+      --soft:#f6f7f9;
 
-      /* Tipografía base */
-      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius:18px;
+      --radius2:22px;
+
+      --shadow: 0 1px 0 rgba(16,24,40,.04);
+
+      --container: 1120px;
+      --container-ipad: 860px;
+
+      --h1: 44px;
+      --h1-lh: 1.04;
+      --h1-w: 800;
+
+      --sub: 18px;
+      --sub-lh: 1.35;
+
+      --body: 16px;
+      --body-lh: 1.55;
+
+      --kicker: 12px;           /* “RESUMEN OPERATIVO” style */
+      --kicker-ls: .16em;
+
+      --pad: 18px;
+      --pad-lg: 22px;
+      --gap: 14px;
     }
 
     *{ box-sizing:border-box; }
     html, body{ height:100%; }
     body{
       margin:0;
-      font-family:var(--font);
       background:var(--bg);
-      color:var(--text);
+      color:var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-    }
-    a{ color:inherit; text-decoration:none; }
-    .wrap{
-      max-width:1120px;
-      margin:0 auto;
-      padding:0 18px;
+      font-size: var(--body);
+      line-height: var(--body-lh);
     }
 
-    /* Header / Nav */
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:saturate(180%) blur(12px);
-      border-bottom:1px solid var(--line);
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 18px;
     }
-    .nav{
+
+    /* ===== Topbar ===== */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line2);
+    }
+    .topbar .inner{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
-      padding:14px 0;
+      height: 64px;
+      gap: 12px;
     }
+
     .brand{
-      font-weight:700;
-      letter-spacing:.22em;
-      font-size:13px;
+      font-weight: 800;
+      letter-spacing:.18em;
+      font-size: 14px;
+      white-space: nowrap;
     }
+
     .nav-actions{
       display:flex;
       align-items:center;
-      gap:10px;
-      white-space:nowrap;
+      gap: 10px;
+      white-space: nowrap;
     }
-    .btn, .btn-ghost{
+
+    .pill{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:var(--radiusPill);
-      font-weight:600;
-      font-size:14px;
-      border:1px solid var(--line);
-      background:#fff;
-      box-shadow:var(--shadow);
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
     }
-    .btn-ghost{
-      background:var(--chip);
-      border-color:transparent;
-      box-shadow:none;
-      color:var(--text);
-      font-weight:600;
+    .pill.soft{
+      background: var(--soft);
+      border-color: transparent;
+      box-shadow: none;
+      font-weight: 700;
+    }
+    .pill .arrow{
+      font-weight: 900;
+      line-height: 1;
+      margin-left: 2px;
     }
 
-    /* Layout */
-    main{ padding:26px 0 34px; }
-    .grid-hero{
+    /* ===== Hero ===== */
+    .hero{
+      padding: 26px 0 10px;
+    }
+
+    .hero-grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
+      grid-template-columns: 1fr;
+      gap: 18px;
       align-items:start;
     }
 
-    /* Text */
-    .kicker{
-      font-size:12px;
-      letter-spacing:.32em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 10px;
-    }
     h1{
-      margin:0 0 10px;
-      font-size:44px;
-      line-height:1.02;
-      letter-spacing:-.02em;
-      font-weight:800;
-    }
-    .subhead{
-      margin:0 0 14px;
-      color:var(--muted);
-      font-size:18px; /* se pidió más chico */
-      font-weight:600;
-    }
-    .lede{
-      margin:10px 0 0;
-      color:var(--muted-2);
-      font-size:14px;   /* menos relevancia */
-      font-weight:600;
+      margin: 10px 0 10px;
+      font-size: var(--h1);
+      line-height: var(--h1-lh);
+      font-weight: var(--h1-w);
+      letter-spacing: -0.02em;
     }
 
-    /* Cards */
-    .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      box-shadow:var(--shadow);
+    .subline{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: var(--sub);     /* pediste más chico */
+      line-height: var(--sub-lh);
+      font-weight: 600;
     }
-    .card-pad{ padding:18px; }
 
-    .card-title{
-      font-size:12px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 10px;
-      font-weight:700;
-    }
-    .card-row{
-      display:grid;
-      grid-template-columns: 110px 1fr;
-      gap:10px;
-      padding:10px 0;
-      border-top:1px solid var(--line);
-    }
-    .card-row:first-of-type{ border-top:0; padding-top:0; }
-    .label{
-      color:var(--muted);
-      font-weight:700;
-      font-size:14px;
-    }
-    .value{
-      color:var(--muted-2);
-      font-weight:600;
-      font-size:14px;
-    }
-    .divider{ height:1px; background:var(--line); margin:14px 0; }
-
-    .cta-row{
+    .hero-cta{
       display:flex;
+      gap: 10px;
       align-items:center;
-      gap:10px;
-      margin-top:14px;
-      flex-wrap:wrap;
+      margin: 6px 0 14px;
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow);
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--ink);
     }
 
-    /* Sections */
-    .section{
-      margin-top:22px;
+    /* ===== Card system ===== */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
+    .card .pad{ padding: var(--pad-lg); }
+
+    .kicker{
+      font-size: var(--kicker);
+      letter-spacing: var(--kicker-ls);
+      text-transform: uppercase;
+      color: #9aa3af;            /* igual que “RESUMEN OPERATIVO” */
+      font-weight: 800;
+    }
+
+    .rule{ height:1px; background: var(--line2); }
+
+    .rows{
+      display:flex;
+      flex-direction:column;
+      gap: 0;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line2);
+    }
+    .row:first-child{ border-top: 0; padding-top: 12px; }
+    .row .label{
+      color: var(--muted2);
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .row .value{
+      color: var(--muted2);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .card-action{
+      border-top: 1px solid var(--line2);
+      padding: 14px 0 0;
+      margin-top: 10px;
+    }
+    .ghost{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    /* ===== Section headers (como “RESUMEN OPERATIVO”) ===== */
+    .section{
+      padding: 18px 0 8px;
+    }
+
     .section-head{
       display:flex;
       align-items:baseline;
       justify-content:space-between;
-      gap:12px;
-      margin:0 0 10px;
+      gap: 12px;
+      margin: 18px 0 12px;
     }
-    .section-head h2{
+    .section-title{
       margin:0;
-      font-size:22px;
-      letter-spacing:-.01em;
+      font-size: 28px;
+      line-height: 1.18;
+      font-weight: 900;
+      letter-spacing: -0.01em;
     }
+
+    /* Subtítulos marcados: más chicos + gris más oscuro */
     .section-note{
       margin:0;
-      color:var(--muted-2);
-      font-size:13px; /* menos relevancia */
-      font-weight:600;
+      font-size: 13px;          /* “bastante más chica” */
+      line-height: 1.4;
+      color: var(--muted2);     /* gris más oscuro */
+      font-weight: 650;
+      max-width: 36ch;
+      text-align:right;
     }
 
-    /* Areas */
-    .grid-areas{
+    /* ===== Work cards ===== */
+    .grid2{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    .mini h3{
-      margin:0 0 6px;
-      font-size:16px;
-      font-weight:750;
-      letter-spacing:-.01em;
-    }
-    .mini p{
-      margin:0 0 10px;
-      color:var(--muted-2);
-      font-size:14px;
-      font-weight:600;
-    }
-    .mini a{
-      color:var(--muted-2);
-      font-weight:700;
-      font-size:14px;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
-    /* Process */
-    .grid-process{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:12px;
+    .work-card .pad{ padding: 18px; }
+    .work-title{
+      margin:0 0 8px;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
     }
+    .work-desc{
+      margin:0 0 12px;
+      color: var(--muted2);
+      font-weight: 650;
+    }
+    .work-link{
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      color: var(--muted2);
+      font-weight: 900;
+    }
+    .work-link .arrow{ font-weight: 900; }
+
+    /* ===== Process cards ===== */
+    .process-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
     .step{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
+      display:grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items:start;
+      padding: 16px 16px;
     }
-    .step-num{
-      width:34px; height:34px;
-      border-radius:999px;
-      border:1px solid var(--line);
+    .badge{
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
       display:flex;
       align-items:center;
       justify-content:center;
-      color:var(--muted);
-      font-weight:800;
-      background:#fff;
-      flex:0 0 auto;
+      color: #9aa3af;
+      font-weight: 900;
     }
-    .step b{
-      display:block;
-      font-size:15px;
-      margin:0 0 4px;
-      font-weight:800;
-    }
-    .step span{
-      display:block;
-      color:var(--muted-2);
-      font-size:14px;
-      font-weight:600;
-    }
-
-    /* Standards – misma “caja”/jerarquía que Resumen Operativo */
-    .standards .card-row{ grid-template-columns: 170px 1fr; }
-    .standards .label{ font-weight:700; }
-    .standards .value{ font-weight:600; }
-
-    /* Contact form */
-    form{ margin-top:10px; }
-    .form-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    .field{ display:flex; flex-direction:column; gap:7px; }
-    .field label{
-      color:var(--muted);
-      font-size:13px; /* menos relevancia */
-      font-weight:700;
-    }
-    input, select, textarea{
-      width:100%;
-      font: inherit;
-      font-size:16px; /* importante para iOS: evita zoom raro en inputs */
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:#fff;
-      color:var(--text);
-      outline:none;
-    }
-
-    /* MUY IMPORTANTE: no romper “Seleccionar” en iOS (no quitar appearance) */
-    select{
-      -webkit-appearance: menulist;
-      appearance: auto;
-      background-image: none;
-    }
-
-    textarea{ min-height:110px; resize:vertical; }
-    .form-actions{
-      margin-top:14px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .hint{
+    .step-title{
       margin:0;
-      color:var(--muted-2);   /* gris más oscuro */
-      font-size:12px;         /* menos relevancia */
-      font-weight:600;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .step-desc{
+      margin:2px 0 0;
+      color: var(--muted2);
+      font-weight: 650;
     }
 
-    /* Footer (sin Gold Node) */
-    footer{
-      border-top:1px solid var(--line);
-      margin-top:28px;
-      padding:18px 0 26px;
-      color:var(--muted);
-      font-size:13px;
+    /* ===== Standards ===== */
+    .std-row{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 16px 0;
+      border-top: 1px solid var(--line2);
     }
-    .foot-row{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+    .std-row:first-child{ border-top:0; padding-top: 14px; }
+    .std-k{ font-weight: 900; color: var(--muted2); }
+    .std-v{ font-weight: 650; color: var(--muted2); }
+
+    /* ===== Contact form ===== */
+    .form{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .field label{
+      display:block;
+      font-size: 13px;
+      color: #9aa3af;
+      letter-spacing: .02em;
+      font-weight: 800;
+      margin: 0 0 6px;
+    }
+    .input, select, textarea{
+      width:100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 16px;
+      outline: none;
+      background: #fff;
+      color: var(--ink);
+    }
+    textarea{ min-height: 110px; resize: vertical; }
+
+    .submit{
+      display:inline-flex;
       align-items:center;
+      justify-content:center;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      font-weight: 900;
+      font-size: 16px;
+      color: var(--ink); /* FIX: texto negro en el botón */
+      box-shadow: var(--shadow);
     }
-    .foot-links{
+
+    /* Nota de urgencia: menos relevante (más chica + gris más oscuro) */
+    .fineprint{
+      margin: 10px 0 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--muted2);
+      font-weight: 650;
+    }
+
+    /* ===== Footer ===== */
+    footer{
+      border-top: 1px solid var(--line2);
+      padding: 18px 0 26px;
+      margin-top: 22px;
+      color: #9aa3af;
+    }
+    .foot{
       display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      color:var(--muted-2);
-      font-weight:600;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content:space-between;
+      font-weight: 700;
     }
+    .foot a{ color: var(--muted2); font-weight: 800; text-decoration:none; }
 
     /* =========================
-       MOBILE (solo versión móvil)
+       Breakpoints
        ========================= */
-    @media (max-width: 680px){
-      .wrap{ padding:0 16px; }
-      .grid-hero{ grid-template-columns:1fr; }
-      h1{
-        font-size:40px; /* título un poco más chico en móvil */
+
+    /* Desktop layout */
+    @media (min-width: 980px){
+      .topbar .inner{ height: 70px; }
+      .hero-grid{
+        grid-template-columns: 1.2fr .8fr;
+        gap: 22px;
       }
-      .subhead{
-        font-size:16px; /* subtítulo más chico */
-        font-weight:600;
+      .grid2{
+        grid-template-columns: 1fr 1fr;
       }
-      .lede{ font-size:13px; } /* “Respuesta clara...” menor relevancia */
-
-      .grid-areas{ grid-template-columns:1fr; }
-      .grid-process{ grid-template-columns:1fr; }
-
-      .section-head{
-        flex-direction:row;
-        align-items:baseline;
-        justify-content:space-between;
-        gap:10px;
+      .process-grid{
+        grid-template-columns: repeat(4, 1fr);
       }
-      .section-note{ font-size:12px; } /* textos marcados más chicos */
-
-      .card-pad{ padding:16px; }
-      .standards .card-row{ grid-template-columns: 1fr; gap:6px; }
-      .standards .label{ font-size:14px; }
-      .standards .value{ font-size:14px; }
-
-      .form-grid{ grid-template-columns:1fr; }
-      .btn, .btn-ghost{ padding:10px 12px; font-size:14px; }
+      .step{ border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+      .step + .step{ margin-top: 0; }
+      .process-grid .step{ padding: 18px; }
     }
 
-    /* =========================
-       iPad / Tablet (ajustes finos)
-       - H1 5–8% más chico
-       - font-weight 1 punto abajo
-       - cards centradas y no a lo ancho infinito
-       - menos padding vertical en cards
-       ========================= */
+    /* iPad: centrar + evitar que “se estire” + H1 5–8% más chico y menos weight */
     @media (min-width: 768px) and (max-width: 1024px){
-      .wrap{ max-width:980px; }
+      .wrap{
+        max-width: var(--container-ipad);
+        padding: 0 18px;
+      }
       h1{
-        font-size: 41px;   /* ~6–7% menos que 44 */
-        font-weight:700;   /* 1 “punto” abajo */
+        font-size: calc(var(--h1) * .93); /* ~7% más chico */
+        font-weight: 700;                /* bajar 1 punto */
       }
-      .card-pad{ padding:16px; } /* apenas menos vertical */
-      .grid-hero{ grid-template-columns: 1.15fr .85fr; }
+      .card .pad{ padding: 18px; }       /* menos padding vertical en iPad */
+      .work-card .pad{ padding: 16px; }
+      .step{ padding: 14px 14px; }
+    }
 
-      /* Centrar bloques grandes (cards) en iPad */
-      .section .card{
-        max-width: 980px;
-        margin-left:auto;
-        margin-right:auto;
+    /* Mobile fine-tuning (evitar “se ve chico al cargar”) */
+    @media (max-width: 420px){
+      :root{
+        --h1: 40px;     /* título apenas más chico */
+        --sub: 16px;    /* subtítulo más chico */
+        --body: 15px;   /* resto apenas más chico */
       }
+      .row{ grid-template-columns: 110px 1fr; }
+      .pill{ padding: 10px 12px; }
+      .cta{ padding: 13px 16px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- NAV: en móvil solo LW GEMS + Tienda → + Iniciar consulta (en ese orden) -->
-  <header class="topbar">
-    <div class="wrap">
-      <div class="nav" role="navigation" aria-label="Navegación principal">
-        <div class="brand">LW GEMS</div>
 
+  <!-- TOPBAR (Mobile: Tienda → primero, luego Iniciar consulta) -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="inner">
+        <div class="brand">LW&nbsp;GEMS</div>
         <div class="nav-actions">
-          <a class="btn-ghost" href="https://shop.lw-gems.com" aria-label="Ir a la tienda online">
-            Tienda <span aria-hidden="true">→</span>
+          <a class="pill soft" href="https://shop.lw-gems.com" aria-label="Tienda online">
+            Tienda <span class="arrow">→</span>
           </a>
-          <a class="btn" href="#contacto" aria-label="Iniciar consulta">Iniciar consulta</a>
+          <a class="pill" href="#contacto" aria-label="Iniciar consulta">
+            Iniciar consulta
+          </a>
         </div>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <div class="wrap">
-      <section class="grid-hero" aria-label="Hero">
+  <main class="wrap">
+
+    <!-- HERO (sin el “LW GEMS” marcado arriba; queda el espacio limpio) -->
+    <section class="hero">
+      <div class="hero-grid">
+
         <div>
-          <p class="kicker">LW GEMS</p>
           <h1>Alianzas y anillos de compromiso.</h1>
+          <p class="subline">Oro 18k · Diamantes naturales · Gemas naturales.</p>
 
-          <!-- Subtítulo: borrar “Decisiones claras.” -->
-          <p class="subhead">Oro 18k · Diamantes naturales · Gemas naturales.</p>
-
-          <div class="cta-row">
-            <a class="btn" href="#contacto">Iniciar consulta</a>
+          <div class="hero-cta">
+            <a class="cta" href="#contacto">Iniciar consulta</a>
           </div>
-
-          <!-- Marcado: menor relevancia -->
-          <p class="lede">Respuesta clara, con opciones concretas.</p>
+          <!-- (Borrado) “Respuesta clara, con opciones concretas.” -->
         </div>
 
-        <!-- Resumen Operativo (card patrón) -->
-        <aside class="card card-pad" aria-label="Resumen operativo">
-          <div class="card-title">Resumen operativo</div>
+        <!-- RESUMEN OPERATIVO (referencia de jerarquía) -->
+        <aside class="card">
+          <div class="pad">
+            <div class="kicker">Resumen operativo</div>
 
-          <div class="card-row">
-            <div class="label">Pago</div>
-            <div class="value">Cuotas o pago único. Contado con descuento cuando aplica.</div>
+            <div class="rows" style="margin-top:10px;">
+              <div class="row">
+                <div class="label">Pago</div>
+                <div class="value">Cuotas o pago único. Contado con descuento cuando aplica.</div>
+              </div>
+
+              <div class="row">
+                <div class="label">Tiempos</div>
+                <div class="value">10–25 días hábiles según complejidad y disponibilidad.</div>
+              </div>
+            </div>
+
+            <div class="card-action">
+              <a class="ghost" href="https://shop.lw-gems.com">
+                Ir a la tienda online <span class="arrow">→</span>
+              </a>
+            </div>
           </div>
-
-          <div class="card-row">
-            <div class="label">Tiempos</div>
-            <div class="value">10–25 días hábiles según complejidad y disponibilidad.</div>
-          </div>
-
-          <div class="divider"></div>
-
-          <a class="btn-ghost" href="https://shop.lw-gems.com">
-            Ir a la tienda online <span aria-hidden="true">→</span>
-          </a>
         </aside>
-      </section>
 
-      <!-- Áreas de trabajo -->
-      <section class="section" aria-label="Áreas de trabajo">
-        <div class="section-head">
-          <h2>Áreas de trabajo</h2>
-          <!-- Marcado: menor relevancia -->
-          <p class="section-note">Selección, especificación y tolerancias de uso real.</p>
+      </div>
+    </section>
+
+    <!-- ÁREAS DE TRABAJO -->
+    <section class="section" id="areas">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Áreas de trabajo</div>
         </div>
+        <p class="section-note">Selección, especificación y tolerancias de uso real.</p>
+      </div>
 
-        <div class="grid-areas">
-          <article class="card card-pad mini">
-            <h3>Anillos de compromiso</h3>
-            <p>Selección de diamante, proporciones, confort y criterios de decisión.</p>
-            <a href="#contacto">Iniciar consulta <span aria-hidden="true">→</span></a>
-          </article>
-
-          <article class="card card-pad mini">
-            <h3>Alianzas</h3>
-            <p>Perfiles, terminación y tolerancias de uso real. Especificación de metal.</p>
-            <a href="#contacto">Iniciar consulta <span aria-hidden="true">→</span></a>
-          </article>
-        </div>
-      </section>
-
-      <!-- Proceso -->
-      <section class="section" aria-label="Proceso">
-        <div class="section-head">
-          <h2>Proceso</h2>
-          <!-- Marcado: menor relevancia (más chico) -->
-          <p class="section-note">Proceso simple. Decisiones registradas. Sin sorpresas.</p>
-        </div>
-
-        <div class="grid-process">
-          <article class="card card-pad step">
-            <div class="step-num">1</div>
-            <div>
-              <b>Brief</b>
-              <span>Medida, presupuesto y uso real.</span>
-            </div>
-          </article>
-
-          <article class="card card-pad step">
-            <div class="step-num">2</div>
-            <div>
-              <b>Selección de material</b>
-              <span>Opciones aceptadas y rechazadas.</span>
-            </div>
-          </article>
-
-          <article class="card card-pad step">
-            <div class="step-num">3</div>
-            <div>
-              <b>Aprobación</b>
-              <span>Condiciones y especificación.</span>
-            </div>
-          </article>
-
-          <article class="card card-pad step">
-            <div class="step-num">4</div>
-            <div>
-              <b>Fabricación</b>
-              <span>Documentación incluida.</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Estándares: sin “Documentación retenida” y sin link a Gold Node -->
-      <section class="section standards" aria-label="Estándares">
-        <div class="section-head">
-          <h2>Estándares</h2>
-          <!-- Marcado: menor relevancia -->
-          <p class="section-note">Criterios claros antes de fabricar.</p>
-        </div>
-
-        <div class="card card-pad">
-          <div class="card-row">
-            <div class="label">Materiales naturales</div>
-            <div class="value">Diamantes y gemas naturales.</div>
+      <div class="grid2">
+        <article class="card work-card">
+          <div class="pad">
+            <h3 class="work-title">Anillos de compromiso</h3>
+            <p class="work-desc">Selección de diamante, proporciones, confort y criterios de decisión.</p>
+            <a class="work-link" href="#contacto">Iniciar consulta <span class="arrow">→</span></a>
           </div>
+        </article>
 
-          <div class="card-row">
-            <div class="label">Verificación previa</div>
-            <div class="value">Chequeo antes de fabricar.</div>
+        <article class="card work-card">
+          <div class="pad">
+            <h3 class="work-title">Alianzas</h3>
+            <p class="work-desc">Perfiles, terminación y tolerancias de uso real. Especificación de metal.</p>
+            <a class="work-link" href="#contacto">Iniciar consulta <span class="arrow">→</span></a>
           </div>
+        </article>
+      </div>
+    </section>
 
-          <div class="card-row">
-            <div class="label">Certificado de metal</div>
-            <div class="value">Laboratorio oficial cuando aplica.</div>
+    <!-- PROCESO SIMPLE -->
+    <section class="section" id="proceso">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Proceso simple</div>
+        </div>
+        <!-- (Borrado) “Proceso simple. Decisiones registradas. Sin sorpresas.” -->
+        <p class="section-note" style="visibility:hidden;">.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="card">
+          <div class="step">
+            <div class="badge">1</div>
+            <div>
+              <p class="step-title">Brief</p>
+              <p class="step-desc">Medida, presupuesto y uso real.</p>
+            </div>
           </div>
         </div>
-      </section>
 
-      <!-- Contacto -->
-      <section class="section" id="contacto" aria-label="Contacto">
-        <div class="section-head">
-          <h2>Contacto</h2>
-          <!-- Marcado: menor relevancia -->
-          <p class="section-note">Consulta breve. Te respondemos con opciones y próximos pasos.</p>
+        <div class="card">
+          <div class="step">
+            <div class="badge">2</div>
+            <div>
+              <p class="step-title">Selección de material</p>
+              <p class="step-desc">Opciones aceptadas y rechazadas.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="card card-pad">
-          <form action="#" method="post">
-            <div class="form-grid">
-              <div class="field">
-                <label for="material">Material</label>
-                <select id="material" name="material" required>
-                  <option value="" selected disabled>Seleccionar</option>
-                  <option>Oro 18k</option>
-                  <option>Platino</option>
-                  <option>Diamante natural</option>
-                  <option>Gemas naturales</option>
-                </select>
-              </div>
+        <div class="card">
+          <div class="step">
+            <div class="badge">3</div>
+            <div>
+              <p class="step-title">Aprobación</p>
+              <p class="step-desc">Condiciones y especificación.</p>
+            </div>
+          </div>
+        </div>
 
-              <div class="field">
-                <label for="tipo">Tipo de pieza</label>
-                <select id="tipo" name="tipo" required>
-                  <option value="" selected disabled>Seleccionar</option>
-                  <option>Anillo de compromiso</option>
-                  <option>Alianzas</option>
-                  <option>Rediseño</option>
-                  <option>Otra pieza</option>
-                </select>
-              </div>
+        <div class="card">
+          <div class="step">
+            <div class="badge">4</div>
+            <div>
+              <p class="step-title">Fabricación</p>
+              <p class="step-desc">Documentación incluida.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <div class="field">
-                <label for="etapa">Etapa</label>
-                <select id="etapa" name="etapa" required>
-                  <option value="" selected disabled>Seleccionar</option>
-                  <option>Idea / referencia</option>
-                  <option>Definición de material</option>
-                  <option>Revisión / ajuste</option>
-                  <option>Lista para fabricar</option>
-                </select>
-              </div>
+    <!-- ESTÁNDARES (misma lógica visual que Resumen operativo: 1 sola caja, tipografía consistente) -->
+    <section class="section" id="estandares">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estándares</div>
+        </div>
+        <!-- (Borrado) “Criterios claros antes de fabricar.” -->
+        <p class="section-note" style="visibility:hidden;">.</p>
+      </div>
 
-              <div class="field">
-                <label for="presupuesto">Presupuesto</label>
-                <input id="presupuesto" name="presupuesto" placeholder="ARS o USD" inputmode="text" />
-              </div>
+      <div class="card">
+        <div class="pad">
+          <div class="kicker">Estándares operativos</div>
 
-              <div class="field">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" name="nombre" placeholder="Tu nombre" />
-              </div>
+          <div class="std-row">
+            <div class="std-k">Materiales naturales</div>
+            <div class="std-v">Diamantes y gemas naturales.</div>
+          </div>
 
-              <div class="field">
-                <label for="contacto">Contacto</label>
-                <input id="contacto" name="contacto" placeholder="Email o WhatsApp" />
-              </div>
+          <div class="std-row">
+            <div class="std-k">Verificación previa</div>
+            <div class="std-v">Chequeo antes de fabricar.</div>
+          </div>
 
-              <div class="field" style="grid-column: 1 / -1;">
-                <label for="detalle">Detalle (opcional)</label>
-                <textarea id="detalle" name="detalle" placeholder="Medida (si aplica), referencias, fecha objetivo, etc."></textarea>
-              </div>
+          <div class="std-row">
+            <div class="std-k">Certificado de metal</div>
+            <div class="std-v">Laboratorio oficial cuando aplica.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Contacto</div>
+        </div>
+        <!-- (Borrado) “Consulta breve…” -->
+        <p class="section-note" style="visibility:hidden;">.</p>
+      </div>
+
+      <div class="card">
+        <div class="pad">
+          <form class="form" action="#" method="post">
+
+            <div class="field">
+              <label for="material">Material</label>
+              <select id="material" name="material" class="input">
+                <option value="" selected disabled>Seleccionar</option>
+                <option>Oro 18k</option>
+                <option>Diamante natural</option>
+                <option>Gemas naturales</option>
+              </select>
             </div>
 
-            <div class="form-actions">
-              <button class="btn" type="submit">Enviar consulta</button>
-              <!-- Marcado: menor relevancia + gris más oscuro -->
-              <p class="hint">Si tu consulta es urgente, indicá una fecha objetivo.</p>
+            <div class="field">
+              <label for="pieza">Tipo de pieza</label>
+              <select id="pieza" name="pieza" class="input">
+                <option value="" selected disabled>Seleccionar</option>
+                <option>Alianzas</option>
+                <option>Anillo de compromiso</option>
+                <option>Rediseño</option>
+              </select>
             </div>
+
+            <div class="field">
+              <label for="etapa">Etapa</label>
+              <select id="etapa" name="etapa" class="input">
+                <option value="" selected disabled>Seleccionar</option>
+                <option>Exploración</option>
+                <option>Decisión</option>
+                <option>Urgente</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="presupuesto">Presupuesto</label>
+              <input id="presupuesto" name="presupuesto" class="input" placeholder="ARS o USD" />
+            </div>
+
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" class="input" placeholder="Tu nombre" />
+            </div>
+
+            <div class="field">
+              <label for="contacto_in">Contacto</label>
+              <input id="contacto_in" name="contacto" class="input" placeholder="Email o WhatsApp" />
+            </div>
+
+            <div class="field">
+              <label for="detalle">Detalle (opcional)</label>
+              <textarea id="detalle" name="detalle" class="input" placeholder="Medida (si aplica), referencias, fecha objetivo, etc."></textarea>
+            </div>
+
+            <!-- FIX botón sin texto: ahora tiene texto y negro -->
+            <button class="submit" type="submit">Enviar consulta</button>
+
+            <p class="fineprint">Si tu consulta es urgente, indicá una fecha objetivo.</p>
           </form>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <footer aria-label="Footer">
-        <div class="wrap">
-          <div class="foot-row">
-            <div>© 2026 LW Gems · Tienda online</div>
-            <nav class="foot-links" aria-label="Enlaces">
-              <a href="https://shop.lw-gems.com">Tienda online</a>
-              <a href="#contacto">Contacto</a>
-              <a href="mailto:info@lw-gems.com">info@lw-gems.com</a>
-            </nav>
-          </div>
+    <footer>
+      <div class="foot">
+        <div>© 2026 LW Gems · Tienda online</div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="https://shop.lw-gems.com">Tienda online</a>
+          <a href="#estandares">Estándares</a>
+          <a href="#contacto">Contacto</a>
+          <a href="mailto:info@lw-gems.com">info@lw-gems.com</a>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
+
   </main>
 </body>
 </html>
