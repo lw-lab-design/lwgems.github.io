@@ -9,14 +9,12 @@
   <style>
     :root{
       --ink:#0f172a;
-      --muted:#6b7280;
-      --muted2:#7b8494;
+      --muted:#6b7280;     /* valor */
+      --muted2:#9aa3af;    /* label / kicker */
       --line:#e5e7eb;
       --bg:#ffffff;
       --card:#ffffff;
-      --chip:#f3f4f6;
       --radius:18px;
-      --shadow:0 1px 0 rgba(16,24,40,.04);
     }
 
     *{box-sizing:border-box}
@@ -31,13 +29,14 @@
     }
 
     a{color:inherit}
+
     .container{
       width:min(100%, 980px);
       margin:0 auto;
       padding:18px 16px 44px;
     }
 
-    /* Topbar */
+    /* Topbar (igual a referencia) */
     .topbar{
       position:sticky;
       top:0;
@@ -58,84 +57,75 @@
       font-weight:700;
       letter-spacing:.34em;
       font-size:13px;
-      color:var(--ink);
       text-transform:uppercase;
       white-space:nowrap;
     }
     .spacer{flex:1}
 
-    /* Botones / links */
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
       padding:11px 14px;
       border-radius:999px;
       border:1px solid var(--line);
       background:#fff;
-      box-shadow:var(--shadow);
       text-decoration:none;
-      font-weight:600; /* mantenemos semi */
+      font-weight:600;
       color:var(--ink);
       line-height:1;
       white-space:nowrap;
     }
-    /* "Tienda" debe ser link simple, no chip */
     .nav-link{
       text-decoration:none;
       font-weight:600;
       color:var(--muted);
       white-space:nowrap;
-      padding:10px 4px; /* hit area sin parecer botón */
-    }
-
-    /* Sections */
-    .section{margin-top:22px}
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      padding:10px 4px;
     }
 
     /* HERO */
     .hero{padding-top:28px}
     .hero h1{
       margin:0;
-      font-size:34px;          /* MOBILE: como tu foto correcta */
+      font-size:34px;
       line-height:1.02;
       letter-spacing:-0.02em;
-      font-weight:700;         /* no ultra bold */
+      font-weight:700;
     }
     .hero .subtitle{
       margin:10px 0 0;
-      font-size:16px;          /* normalizado */
+      font-size:16px;
       line-height:1.45;
       font-weight:400;
       color:var(--muted);
     }
-    .hero .cta-row{
+    .cta-row{
       margin-top:16px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
     }
-    .hero .micro{
+    .micro{
       margin:10px 0 0;
-      font-size:14px;          /* secundario */
+      font-size:14px;
       line-height:1.45;
-      color:var(--muted2);
+      color:var(--muted);
       font-weight:400;
     }
 
-    /* Small uppercase section label (como RESUMEN OPERATIVO) */
+    /* ===== MASTER BOX SYSTEM (la caja de referencia) ===== */
+    .section{ margin-top:18px; } /* compacto: sin separación grande */
+    .box{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px 16px;
+    }
+
+    /* Kicker inside box */
     .kicker{
       font-size:13px;
       letter-spacing:.32em;
       text-transform:uppercase;
-      color:#98a2b3;           /* gris claro institucional */
+      color:var(--muted2);
       font-weight:700;
       margin:0 0 10px;
     }
@@ -145,40 +135,33 @@
       margin-bottom:14px;
     }
 
-    /* Summary card */
-    .summary{
-      margin-top:16px;
-      padding:18px 16px;
-    }
-    .summary-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
-    .summary-row{
+    /* Key/Value rows (igual Pago/Tiempos) */
+    .kv{
       display:grid;
       grid-template-columns: 92px 1fr;
       gap:14px;
       align-items:start;
       padding:6px 0;
     }
-    .summary-row + .summary-row{
+    .kv + .kv{
       border-top:1px solid var(--line);
       padding-top:14px;
       margin-top:6px;
     }
     .label{
       font-size:14px;
-      color:#9aa3af;
-      font-weight:600;        /* no grueso */
+      color:var(--muted2);
+      font-weight:600;
     }
     .value{
       font-size:18px;
       line-height:1.35;
-      color:#6b7280;
-      font-weight:600;        /* semi, no bold pesado */
+      color:var(--muted);
+      font-weight:600;
     }
-    .summary .summary-actions{
+
+    /* Button row inside box */
+    .box-actions{
       margin-top:14px;
       padding-top:14px;
       border-top:1px solid var(--line);
@@ -192,69 +175,60 @@
       font-weight:600;
     }
 
-    /* Headings (secciones) */
-    .section-head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:12px;
-    }
-    .section-sub{
-      margin:2px 0 0;
-      font-size:14px;          /* menos relevancia */
-      line-height:1.45;
-      color:var(--muted2);
-      font-weight:400;
-      max-width:38ch;
-      text-align:right;
-    }
-
-    /* Work cards */
+    /* Areas inside box */
     .cards{
       display:grid;
       grid-template-columns:1fr;
       gap:14px;
+      margin-top:2px;
     }
-    .work-card{
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
       padding:18px 18px;
+      background:#fff;
     }
-    .work-card h3{
+    .card h3{
       margin:0;
       font-size:18px;
-      font-weight:650; /* ↓ baja densidad (menos “grueso”) */
+      font-weight:700;
       letter-spacing:-.01em;
+      color:var(--ink);
     }
-    .work-card p{
+    .card p{
       margin:8px 0 0;
       font-size:15px;
       line-height:1.5;
       color:var(--muted);
       font-weight:400;
     }
-    .work-card a{
+    .card a{
       display:inline-flex;
       align-items:center;
       gap:10px;
       margin-top:12px;
       font-size:15px;
-      color:#6b7280;
+      color:var(--muted);
       text-decoration:none;
       font-weight:600;
     }
 
-    /* Process steps */
+    /* Steps inside box */
     .steps{
       display:grid;
       grid-template-columns:1fr;
       gap:12px;
+      margin-top:2px;
     }
     .step{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
       padding:16px 16px;
       display:grid;
       grid-template-columns:56px 1fr;
       gap:14px;
       align-items:start;
+      background:#fff;
     }
     .badge{
       width:44px;height:44px;
@@ -263,14 +237,14 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      color:#9aa3af;
+      color:var(--muted2);
       font-weight:700;
       background:#fff;
     }
     .step h4{
       margin:0;
       font-size:18px;
-      font-weight:650; /* ↓ menos grueso */
+      font-weight:700;
       color:var(--ink);
     }
     .step p{
@@ -281,23 +255,18 @@
       font-weight:400;
     }
 
-    /* Standards card (AHORA COPIA EL SISTEMA “Pago / Tiempos”) */
-    .standards{
-      padding:18px 16px;
-    }
-    .standards .summary-row{
-      grid-template-columns: 160px 1fr; /* labels más largos (Materiales naturales, etc.) */
-    }
+    /* Standards: mismo sistema, solo cambia ancho label */
+    .kv.wide{ grid-template-columns: 120px 1fr; }
 
-    /* Contact */
+    /* Form inside box */
     .form{
-      padding:18px 16px;
+      margin-top:2px;
     }
     .field{margin-top:14px}
     .field label{
       display:block;
       font-size:14px;
-      color:#9aa3af;
+      color:var(--muted2);
       font-weight:600;
       margin-bottom:8px;
     }
@@ -312,33 +281,34 @@
       color:var(--ink);
     }
     textarea{min-height:120px; resize:vertical}
-    .submit-row{margin-top:16px}
+
     .btn.primary{
       width:100%;
+      margin-top:16px;
       padding:14px 16px;
       font-size:16px;
       font-weight:700;
-      background:var(--chip);
-      border-color:transparent;
-      color:var(--ink);        /* ✅ texto negro */
+      background:#f3f4f6;
+      border:1px solid #f3f4f6;
+      color:var(--ink);
     }
     .hint{
       margin:12px 0 0;
       font-size:14px;
       line-height:1.45;
-      color:var(--muted2);
+      color:var(--muted);
       font-weight:400;
     }
 
     /* Footer */
     .footer{
-      margin-top:26px;
+      margin-top:22px;
       padding-top:18px;
       border-top:1px solid var(--line);
-      color:#98a2b3;
+      color:var(--muted2);
       font-size:14px;
     }
-    .footer a{color:#667085; text-decoration:none; font-weight:600}
+    .footer a{color:var(--muted); text-decoration:none; font-weight:600}
     .footer-nav{
       display:flex;
       flex-wrap:wrap;
@@ -346,25 +316,21 @@
       margin-top:10px;
     }
 
-    /* MOBILE tweaks */
-    @media (max-width: 480px){
+    /* Mobile exact */
+    @media (max-width:480px){
       .hero h1{font-size:34px}
       .hero .subtitle{font-size:16px}
       .value{font-size:18px}
-      .section-sub{max-width:34ch}
-      .standards .summary-row{grid-template-columns: 150px 1fr;}
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Topbar (igual a tu referencia: botón principal + Tienda como link) -->
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">LW GEMS</div>
       <div class="spacer"></div>
-
       <a class="btn" href="#contacto">Iniciar consulta</a>
       <a class="nav-link" href="https://shop.lw-gems.com" rel="nofollow">Tienda</a>
     </div>
@@ -372,7 +338,6 @@
 
   <main class="container">
 
-    <!-- HERO (sin “LW GEMS” arriba del H1) -->
     <section class="hero">
       <h1>Alianzas y anillos de compromiso.</h1>
       <p class="subtitle">Oro 18k · Diamantes naturales · Decisiones claras.</p>
@@ -382,188 +347,175 @@
       </div>
 
       <p class="micro">Respuesta clara, con opciones concretas.</p>
-
-      <!-- Resumen Operativo -->
-      <section class="section">
-        <div class="card summary">
-          <div class="kicker rule">Resumen operativo</div>
-
-          <div class="summary-grid">
-            <div class="summary-row">
-              <div class="label">Pago</div>
-              <div class="value">Cuotas o pago único. Contado con descuento cuando aplica.</div>
-            </div>
-
-            <div class="summary-row">
-              <div class="label">Tiempos</div>
-              <div class="value">10–25 días hábiles según complejidad y disponibilidad.</div>
-            </div>
-          </div>
-
-          <div class="summary-actions">
-            <a class="btn ghost" href="https://shop.lw-gems.com" rel="nofollow">Ir a la tienda online <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-      </section>
     </section>
 
-    <!-- ÁREAS DE TRABAJO -->
+    <!-- RESUMEN OPERATIVO (MASTER) -->
+    <section class="section" id="resumen">
+      <div class="box">
+        <div class="kicker rule">Resumen operativo</div>
+
+        <div class="kv">
+          <div class="label">Pago</div>
+          <div class="value">Cuotas o pago único. Contado con descuento cuando aplica.</div>
+        </div>
+
+        <div class="kv">
+          <div class="label">Tiempos</div>
+          <div class="value">10–25 días hábiles según complejidad y disponibilidad.</div>
+        </div>
+
+        <div class="box-actions">
+          <a class="btn ghost" href="https://shop.lw-gems.com" rel="nofollow">Ir a la tienda online →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÁREAS DE TRABAJO (MISMA CAJA + contenido dentro) -->
     <section class="section" id="areas">
-      <div class="section-head">
+      <div class="box">
         <div class="kicker">Áreas de trabajo</div>
-        <p class="section-sub">Selección, especificación y tolerancias de uso real.</p>
-      </div>
 
-      <div class="cards">
-        <div class="card work-card">
-          <h3>Anillos de compromiso</h3>
-          <p>Selección de diamante, proporciones, confort y criterios de decisión.</p>
-          <a href="#contacto">Iniciar consulta <span aria-hidden="true">→</span></a>
-        </div>
+        <div class="cards">
+          <div class="card">
+            <h3>Anillos de compromiso</h3>
+            <p>Selección de diamante, proporciones, confort y criterios de decisión.</p>
+            <a href="#contacto">Iniciar consulta →</a>
+          </div>
 
-        <div class="card work-card">
-          <h3>Alianzas</h3>
-          <p>Perfiles, terminación y tolerancias de uso real. Especificación de metal.</p>
-          <a href="#contacto">Iniciar consulta <span aria-hidden="true">→</span></a>
+          <div class="card">
+            <h3>Alianzas</h3>
+            <p>Perfiles, terminación y tolerancias de uso real. Especificación de metal.</p>
+            <a href="#contacto">Iniciar consulta →</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PROCESO SIMPLE -->
+    <!-- PROCESO SIMPLE (MISMA CAJA) -->
     <section class="section" id="proceso">
-      <div class="section-head">
+      <div class="box">
         <div class="kicker">Proceso simple</div>
-        <p class="section-sub">Decisiones registradas. Sin sorpresas.</p>
-      </div>
 
-      <div class="steps">
-        <div class="card step">
-          <div class="badge">1</div>
-          <div>
-            <h4>Brief</h4>
-            <p>Medida, presupuesto y uso real.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="badge">1</div>
+            <div>
+              <h4>Brief</h4>
+              <p>Medida, presupuesto y uso real.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="card step">
-          <div class="badge">2</div>
-          <div>
-            <h4>Selección de material</h4>
-            <p>Opciones aceptadas y rechazadas.</p>
+          <div class="step">
+            <div class="badge">2</div>
+            <div>
+              <h4>Selección de material</h4>
+              <p>Opciones aceptadas y rechazadas.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="card step">
-          <div class="badge">3</div>
-          <div>
-            <h4>Aprobación</h4>
-            <p>Condiciones y especificación.</p>
+          <div class="step">
+            <div class="badge">3</div>
+            <div>
+              <h4>Aprobación</h4>
+              <p>Condiciones y especificación.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="card step">
-          <div class="badge">4</div>
-          <div>
-            <h4>Fabricación</h4>
-            <p>Documentación incluida.</p>
+          <div class="step">
+            <div class="badge">4</div>
+            <div>
+              <h4>Fabricación</h4>
+              <p>Documentación incluida.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ESTÁNDARES (ahora igual que Pago/Tiempos) -->
+    <!-- ESTÁNDARES (MISMA CAJA / MISMA TIPOGRAFÍA) -->
     <section class="section" id="estandares">
-      <div class="section-head">
+      <div class="box">
         <div class="kicker">Estándares</div>
-        <p class="section-sub">Criterios claros antes de fabricar.</p>
-      </div>
-
-      <div class="card standards">
         <div class="kicker rule">Estándares operativos</div>
 
-        <div class="summary-grid">
-          <div class="summary-row">
-            <div class="label">Materiales</div>
-            <div class="value">Diamantes y gemas naturales.</div>
-          </div>
+        <div class="kv wide">
+          <div class="label">Materiales</div>
+          <div class="value">Diamantes y gemas naturales.</div>
+        </div>
 
-          <div class="summary-row">
-            <div class="label">Verificación</div>
-            <div class="value">Chequeo antes de fabricar.</div>
-          </div>
+        <div class="kv wide">
+          <div class="label">Verificación</div>
+          <div class="value">Chequeo antes de fabricar.</div>
+        </div>
 
-          <div class="summary-row">
-            <div class="label">Metal</div>
-            <div class="value">Laboratorio oficial cuando aplica.</div>
-          </div>
+        <div class="kv wide">
+          <div class="label">Metal</div>
+          <div class="value">Laboratorio oficial cuando aplica.</div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- CONTACTO (MISMA CAJA) -->
     <section class="section" id="contacto">
-      <div class="section-head">
+      <div class="box">
         <div class="kicker">Contacto</div>
-        <p class="section-sub">Consulta breve. Te respondemos con opciones y próximos pasos.</p>
-      </div>
 
-      <form class="card form" action="#" method="post">
-        <div class="field">
-          <label for="material">Material</label>
-          <select id="material" name="material">
-            <option value="" selected>Seleccionar</option>
-            <option>Oro 18k</option>
-            <option>Platino</option>
-            <option>Diamantes naturales</option>
-            <option>Gemas naturales</option>
-          </select>
-        </div>
+        <form class="form" action="#" method="post">
+          <div class="field">
+            <label for="material">Material</label>
+            <select id="material" name="material">
+              <option value="" selected>Seleccionar</option>
+              <option>Oro 18k</option>
+              <option>Platino</option>
+              <option>Diamantes naturales</option>
+              <option>Gemas naturales</option>
+            </select>
+          </div>
 
-        <div class="field">
-          <label for="tipo">Tipo de pieza</label>
-          <select id="tipo" name="tipo">
-            <option value="" selected>Seleccionar</option>
-            <option>Anillo de compromiso</option>
-            <option>Alianzas</option>
-            <option>Otro</option>
-          </select>
-        </div>
+          <div class="field">
+            <label for="tipo">Tipo de pieza</label>
+            <select id="tipo" name="tipo">
+              <option value="" selected>Seleccionar</option>
+              <option>Anillo de compromiso</option>
+              <option>Alianzas</option>
+              <option>Otro</option>
+            </select>
+          </div>
 
-        <div class="field">
-          <label for="etapa">Etapa</label>
-          <select id="etapa" name="etapa">
-            <option value="" selected>Seleccionar</option>
-            <option>Exploración</option>
-            <option>Definición</option>
-            <option>Listo para fabricar</option>
-          </select>
-        </div>
+          <div class="field">
+            <label for="etapa">Etapa</label>
+            <select id="etapa" name="etapa">
+              <option value="" selected>Seleccionar</option>
+              <option>Exploración</option>
+              <option>Definición</option>
+              <option>Listo para fabricar</option>
+            </select>
+          </div>
 
-        <div class="field">
-          <label for="presupuesto">Presupuesto</label>
-          <input id="presupuesto" name="presupuesto" placeholder="ARS o USD" />
-        </div>
+          <div class="field">
+            <label for="presupuesto">Presupuesto</label>
+            <input id="presupuesto" name="presupuesto" placeholder="ARS o USD" />
+          </div>
 
-        <div class="field">
-          <label for="nombre">Nombre</label>
-          <input id="nombre" name="nombre" placeholder="Tu nombre" />
-        </div>
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" placeholder="Tu nombre" />
+          </div>
 
-        <div class="field">
-          <label for="contacto">Contacto</label>
-          <input id="contacto" name="contacto" placeholder="Email o WhatsApp" />
-        </div>
+          <div class="field">
+            <label for="contacto_in">Contacto</label>
+            <input id="contacto_in" name="contacto" placeholder="Email o WhatsApp" />
+          </div>
 
-        <div class="field">
-          <label for="detalle">Detalle (opcional)</label>
-          <textarea id="detalle" name="detalle" placeholder="Medida (si aplica), referencias, fecha objetivo, etc."></textarea>
-        </div>
+          <div class="field">
+            <label for="detalle">Detalle (opcional)</label>
+            <textarea id="detalle" name="detalle" placeholder="Medida (si aplica), referencias, fecha objetivo, etc."></textarea>
+          </div>
 
-        <div class="submit-row">
           <button class="btn primary" type="submit">Enviar consulta</button>
           <p class="hint">Si tu consulta es urgente, indicá una fecha objetivo.</p>
-        </div>
-      </form>
+        </form>
+      </div>
 
       <footer class="footer">
         <div>© 2026 LW Gems · Tienda online</div>
