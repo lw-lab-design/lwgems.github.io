@@ -608,3 +608,15 @@ Ajustes finos tipografía + contención visual
     letter-spacing: -0.01em;
   }
 }
+/* MOBILE – Subtítulo debajo del H1 */
+@media (max-width: 480px) {
+  .hero .subtitle,
+  .hero p.lead {
+    font-size: 16px;
+    line-height: 1.45;
+    font-weight: 400;
+    color: #6b7280;       /* gris técnico (no marketing) */
+    margin-top: 8px;
+    margin-bottom: 18px;
+  }
+}
