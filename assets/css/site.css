@@ -1,1 +1,141 @@
+/* ==========================================================
+   iPad-only overrides (no toca mobile)
+   Pegar al final / en ipad.css cargado último
+   ========================================================== */
 
+@media only screen
+  and (min-width: 768px)
+  and (max-width: 1366px)
+  and (hover: none)
+  and (pointer: coarse) {
+
+  /* --- Topbar: más aire y targets táctiles --- */
+  .topbar-inner{
+    padding:14px 20px;
+    gap:14px;
+    max-width: 1080px; /* iPad Pro se ve mejor con un poco más de ancho */
+  }
+  .brand{
+    font-size:13px; /* igual que tu base; mantenemos */
+  }
+  .nav-link{
+    padding:12px 6px; /* más cómodo en touch */
+  }
+  .btn{
+    padding:12px 16px;
+  }
+
+  /* --- Contenedor general: más “editorial” --- */
+  .container{
+    width: min(100%, 1080px);
+    padding:22px 22px 56px;
+  }
+
+  /* --- HERO: en iPad conviene evitar el “desktop split” duro --- */
+  /* En tu CSS base, desde 860px pasás a 2 columnas. En iPad lo suavizamos. */
+  .hero{
+    display:block; /* fuerza una columna en iPad */
+    padding-top:12px;
+  }
+
+  /* Tipografía hero: apenas más grande que móvil, sin volverse desktop */
+  .hero h1{
+    font-size:34px;
+    line-height:1.08;
+    margin-top:48px;
+    max-width: 22ch; /* evita líneas demasiado largas */
+  }
+  .hero .subtitle{
+    font-size:15px;
+    max-width: 52ch;
+  }
+
+  /* Resumen operativo: que no “salte” muy abajo y respire */
+  .section--spacious{ margin-top:34px; }
+  .summary{
+    padding:20px 18px;
+  }
+
+  /* --- Cards: más aire --- */
+  .work-card{ padding:20px 20px; }
+  .work-card h3{ font-size:19px; }
+  .work-card p{ font-size:15px; }
+
+  /* --- Grillas: en iPad podés mostrar 2 columnas donde aporta --- */
+  /* Áreas de trabajo: 2 columnas */
+  #areas .cards{
+    grid-template-columns: 1fr 1fr;
+    gap:16px;
+  }
+
+  /* Steps: 2 columnas en landscape grande, 1 en portrait (se define abajo) */
+  .steps{
+    grid-template-columns: 1fr 1fr;
+    gap:14px;
+  }
+
+  /* Standards: mejorar legibilidad de labels */
+  .standards{ padding:20px 18px; }
+  .standards .summary-row{
+    grid-template-columns: 180px 1fr;
+  }
+
+  /* Form: ancho y aire */
+  .form{ padding:20px 18px; }
+  select,input,textarea{
+    padding:14px 14px;
+    font-size:16px;
+  }
+
+  /* Footer: un poco más separado */
+  .footer{
+    margin-top:32px;
+    padding-top:22px;
+  }
+  .footer-nav{ gap:16px 22px; }
+}
+
+
+/* ==========================================================
+   iPad portrait (más estrecho): volvemos a 1 columna donde conviene
+   ========================================================== */
+@media only screen
+  and (min-width: 768px)
+  and (max-width: 1024px)
+  and (orientation: portrait)
+  and (hover: none)
+  and (pointer: coarse) {
+
+  #areas .cards{ grid-template-columns: 1fr; }
+  .steps{ grid-template-columns: 1fr; }
+
+  .hero h1{
+    font-size:33px;
+    margin-top:46px;
+  }
+  .container{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+/* ==========================================================
+   iPad Pro 12.9 / landscape: permitir 2 columnas en hero si querés
+   (opcional; si preferís siempre 1 columna, borrá este bloque)
+   ========================================================== */
+@media only screen
+  and (min-width: 1180px)
+  and (max-width: 1366px)
+  and (orientation: landscape)
+  and (hover: none)
+  and (pointer: coarse) {
+
+  .hero{
+    display:grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap:18px;
+    align-items:start;
+  }
+  .hero-right{ padding-top: 34px; }
+}
