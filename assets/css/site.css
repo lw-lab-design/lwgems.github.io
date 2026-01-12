@@ -139,3 +139,84 @@
   }
   .hero-right{ padding-top: 34px; }
 }
+/* ==========================================================
+   iPadOS FIX (aplica en iPad aunque tenga trackpad/mouse)
+   Corrige: hero/summary ancho, Areas 2 columnas, Steps 2 columnas,
+   Standards 1-2 arriba y 3 abajo.
+   ========================================================== */
+
+@supports (-webkit-touch-callout: none) {
+  @media (min-width: 768px) and (max-width: 1366px) {
+
+    /* --- Contenedor: aire iPad --- */
+    .container{
+      width: min(100%, 1080px);
+      padding: 22px 22px 56px;
+    }
+
+    /* --- HERO: 2 columnas en iPad (como querés: izquierda texto / derecha espacio) --- */
+    .hero{
+      display:grid !important;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: start;
+      padding-top: 12px;
+    }
+
+    /* Caja derecha: que exista “espacio” visual */
+    .hero-right{ padding-top: 0 !important; }
+
+    /* Resumen operativo: NO ancho completo, queda contenido (evita vacío raro) */
+    .hero-right .section--spacious{ margin-top: 0 !important; }
+    .hero-right .summary{
+      max-width: 560px;
+      width: 100%;
+    }
+
+    /* Tipografía un poco más iPad (sin irse a desktop gigante) */
+    .hero h1{ font-size: 34px; line-height: 1.08; margin-top: 48px; max-width: 24ch; }
+    .hero .subtitle{ font-size: 15px; max-width: 56ch; }
+
+    /* --- ÁREAS DE TRABAJO: 2 columnas reales (1 y 2 lado a lado) --- */
+    #areas .cards{
+      grid-template-columns: 1fr 1fr !important;
+      gap: 16px !important;
+      align-items: stretch;
+    }
+    #areas .work-card{ height: 100%; }
+
+    /* --- PROCESO SIMPLE: 2 columnas (1-2 izq / 3-4 der) --- */
+    #proceso .steps{
+      grid-template-columns: 1fr 1fr !important;
+      gap: 14px !important;
+    }
+    #proceso .step{ height: 100%; }
+
+    /* --- ESTÁNDARES: 1 y 2 arriba, 3 abajo (como tu dibujo) --- */
+    #estandares .summary-grid{
+      grid-template-columns: 1fr 1fr !important;
+      gap: 14px !important;
+    }
+    #estandares .summary-row{
+      border-top: 0 !important;  /* evita líneas raras al pasar a grid */
+      padding: 10px 0 !important;
+      margin: 0 !important;
+    }
+    #estandares .summary-row:nth-child(3){
+      grid-column: 1 / -1;       /* el 3 ocupa toda la fila inferior */
+    }
+
+    /* --- Footer: un poco más aire --- */
+    .footer{ margin-top: 32px; padding-top: 22px; }
+  }
+
+  /* iPad portrait: 1 columna (evita que se comprima) */
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .hero{ display:block !important; }
+    .hero-right .summary{ max-width: none; }
+    #areas .cards{ grid-template-columns: 1fr !important; }
+    #proceso .steps{ grid-template-columns: 1fr !important; }
+    #estandares .summary-grid{ grid-template-columns: 1fr !important; }
+    #estandares .summary-row:nth-child(3){ grid-column: auto; }
+  }
+}
