@@ -131,3 +131,61 @@
     padding-right:20px;
   }
 }
+/* iPad overrides – robusto (no depende de hover/pointer) */
+@media (min-width: 768px) and (max-width: 1366px){
+
+  /* HERO: volverlo 2 columnas en iPad (como tu dibujo) */
+  .hero{
+    display:grid !important;
+    grid-template-columns: 1.05fr .95fr !important;
+    gap:18px !important;
+    align-items:start !important;
+  }
+
+  /* Resumen operativo: que quede en la derecha, más contenido */
+  .hero-right{ padding-top: 0 !important; }
+  .section--spacious{ margin-top: 0 !important; }
+  .hero-right .summary{
+    max-width: 560px;
+    width: 100%;
+  }
+
+  /* Áreas: 2 cards lado a lado */
+  #areas .cards{
+    grid-template-columns: 1fr 1fr !important;
+    gap:16px !important;
+    align-items:stretch !important;
+  }
+  #areas .work-card{ height: 100%; }
+
+  /* Proceso: 2 columnas (1-2 / 3-4) */
+  #proceso .steps{
+    grid-template-columns: 1fr 1fr !important;
+    gap:14px !important;
+  }
+  #proceso .step{ height: 100%; }
+
+  /* Estándares: 2 arriba, 1 abajo */
+  #estandares .summary-grid{
+    display:grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap:14px !important;
+  }
+  #estandares .summary-row{
+    border-top:0 !important;
+    padding:10px 0 !important;
+    margin:0 !important;
+  }
+  #estandares .summary-row:nth-child(3){
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* iPad portrait: evitar compresión, volver a 1 columna */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait){
+  .hero{ display:block !important; }
+  #areas .cards{ grid-template-columns: 1fr !important; }
+  #proceso .steps{ grid-template-columns: 1fr !important; }
+  #estandares .summary-grid{ grid-template-columns: 1fr !important; }
+  #estandares .summary-row:nth-child(3){ grid-column:auto !important; }
+}
