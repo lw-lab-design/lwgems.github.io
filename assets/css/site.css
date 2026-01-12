@@ -362,3 +362,64 @@ textarea{ min-height: 84px; resize: vertical; }
   .formGrid{ grid-template-columns: 1fr; }
   .steps{ grid-template-columns: 1fr; }
 }
+/* =====================================================
+iPAD ONLY (768px – 1024px)
+Reducir ancho y centrar bloques grandes
+===================================================== */
+@media (min-width: 768px) and (max-width: 1024px){
+
+  /* Contenedor general: no full-width visual */
+  main.container{
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* HERO: texto + resumen más contenidos */
+  .hero{
+    grid-template-columns: 1fr;
+  }
+
+  .heroMain,
+  .panel{
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ÁREAS DE TRABAJO */
+  .grid3{
+    grid-template-columns: 1fr;
+  }
+
+  .grid3 .card{
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* PROCESO: que no se estire de lado a lado */
+  .steps{
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ESTÁNDARES (caja única) */
+  .panelLike,
+  #estandares .card{
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* CONTACTO */
+  #contacto .card{
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
