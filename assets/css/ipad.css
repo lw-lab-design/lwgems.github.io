@@ -1,0 +1,89 @@
+/* ipad.css — LW Gems (solo iPad) */
+
+/* TEST: si esto carga en iPad vas a ver un borde rojo.
+   Cuando confirmes, borrá este bloque. */
+@media (min-width: 768px) and (max-width: 1366px){
+  body{ outline: 6px solid #ff0000 !important; }
+}
+
+/* iPad layout: 2 columnas en hero, 2 columnas en áreas y proceso, y estándares 2+1 */
+@supports (-webkit-touch-callout: none) {
+  @media (min-width: 768px) and (max-width: 1366px){
+
+    .container{
+      width: min(100%, 1080px);
+      padding: 22px 22px 56px;
+    }
+
+    .topbar-inner{
+      padding:14px 20px;
+      gap:14px;
+      max-width:1080px;
+    }
+    .nav-link{ padding:12px 6px; }
+    .btn{ padding:12px 16px; }
+
+    /* HERO: texto izq / espacio+resumen der */
+    .hero{
+      display:grid !important;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+      align-items:start;
+      padding-top:12px;
+    }
+    .hero h1{
+      font-size:34px;
+      line-height:1.08;
+      margin-top:48px;
+      max-width:24ch;
+    }
+    .hero .subtitle{ font-size:15px; max-width:56ch; }
+
+    .hero-right{ padding-top:0 !important; }
+    .hero-right .section--spacious{ margin-top:0 !important; }
+    .hero-right .summary{
+      max-width:560px;
+      width:100%;
+    }
+
+    /* Áreas de trabajo: 2 columnas (1 y 2 lado a lado) */
+    #areas .cards{
+      grid-template-columns: 1fr 1fr !important;
+      gap:16px !important;
+      align-items:stretch;
+    }
+    #areas .work-card{ height:100%; }
+
+    /* Proceso: 2 columnas (1-2 / 3-4) */
+    #proceso .steps{
+      grid-template-columns: 1fr 1fr !important;
+      gap:14px !important;
+    }
+    #proceso .step{ height:100%; }
+
+    /* Estándares: 2 arriba y 1 abajo */
+    #estandares .summary-grid{
+      grid-template-columns: 1fr 1fr !important;
+      gap:14px !important;
+    }
+    #estandares .summary-row{
+      border-top:0 !important;
+      padding:10px 0 !important;
+      margin:0 !important;
+    }
+    #estandares .summary-row:nth-child(3){
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* iPad portrait: volvemos a 1 columna para evitar compresión */
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait){
+    .hero{ display:block !important; }
+    .hero-right .summary{ max-width:none; }
+
+    #areas .cards{ grid-template-columns: 1fr !important; }
+    #proceso .steps{ grid-template-columns: 1fr !important; }
+    #estandares .summary-grid{ grid-template-columns: 1fr !important; }
+    #estandares .summary-row:nth-child(3){ grid-column:auto; }
+  }
+}
